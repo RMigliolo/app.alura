@@ -11,9 +11,11 @@
     body{margin:0;font-family:Lato,system-ui,-apple-system,Segoe UI,Roboto,Arial}
     a{color:inherit;text-decoration:none}
 
+    /* ===== Layout ===== */
     .wrap{min-height:100vh;background:#f5f7f8;display:flex;flex-direction:column}
     .container{max-width:1180px;margin:0 auto;padding:0 24px}
 
+    /* ===== Header ===== */
     .header{background:#fff;border-top:4px solid #2A7AE4;border-bottom:1px solid #e5e7eb}
     .header-row{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;align-items:center;gap:6px;color:#2b2b2b;font-weight:900;letter-spacing:.2px}
@@ -22,10 +24,12 @@
     .btn-green{background:#3ad27a;color:#fff;padding:8px 12px;font-weight:800;border:0}
     .btn-green:hover{opacity:.92}
 
+    /* ===== Grid principal ===== */
     .grid{display:flex;gap:48px;justify-content:center;align-items:flex-start;padding:40px 0}
     .col-left{width:520px}
     .col-right{width:660px}
 
+    /* ===== Login ===== */
     .loginBox{background:#fff;border:1px solid #e5e7eb;padding:26px}
     .title{margin:0;color:#6b7280;font-weight:900;font-size:28px}
     .subtitle{margin:6px 0 18px 0;color:#9ca3af;font-size:14px}
@@ -37,32 +41,31 @@
     .error{color:#dc2626;text-align:center;margin-top:6px;font-size:14px}
     .center{text-align:center}
 
+    /* ===== Mosaicos (3x2) ===== */
     .right-title{color:#6b7280;font-size:28px;font-weight:900;margin:6px 0 16px 0}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-
     .card{
       position:relative; display:block; color:#fff;
-      padding:16px; padding-top:52px;
+      padding:16px; padding-top:52px; /* espacio icono */
       border:1px solid rgba(0,0,0,.06);
       min-height:120px;
       transition:transform .18s ease, filter .18s ease, box-shadow .18s ease;
       box-shadow:0 0 0 1px rgba(0,0,0,.02) inset;
       outline:none; overflow:hidden;
     }
-    /* Barra superior del mismo color, más clara (6px) */
+    /* Barra superior de tono más claro (6px) */
     .card::before{
       content:""; position:absolute; top:0; left:0; right:0; height:6px;
-      background: currentColor;
-      opacity:1; pointer-events:none;
+      background:currentColor; opacity:1; pointer-events:none;
     }
-    /* Hover: aclarar y sombra muy tenue */
-    .card:hover, .card:focus-visible{
+    /* Hover: aclarar 3% + sombra muy tenue */
+    .card:hover,.card:focus-visible{
       transform:translateY(-4px);
       filter:brightness(1.03);
       box-shadow:0 5px 10px rgba(0,0,0,.07);
     }
     .card:focus-visible{
-      box-shadow:0 5px 10px rgba(0,0,0,.07), 0 0 0 3px rgba(255,255,255,.65) inset;
+      box-shadow:0 5px 10px rgba(0,0,0,.07),0 0 0 3px rgba(255,255,255,.65) inset;
     }
 
     .card b{display:block;font-size:16px;margin-bottom:6px;line-height:1.15;font-weight:900}
@@ -71,7 +74,7 @@
     /* Iconos */
     .card-icon{position:absolute;top:14px;left:12px;width:28px;height:28px;opacity:.98}
     .card-icon svg{width:100%;height:100%}
-    .card-icon *{stroke:#fff;fill:none;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+    .card-icon *{stroke:#fff;fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
 
     /* Colores base + barra clara */
     .c1{background:#00c86f}  .c1::before{background:#2fda8b}
@@ -81,41 +84,66 @@
     .c5{background:#ff8c2a}  .c5::before{background:#ffa64f}
     .c6{background:#f16165}  .c6::before{background:#f47f82}
 
+    /* ===== Banner ===== */
     .banner{display:block;background:#e9eff3;padding:16px;margin-top:14px;color:#374151;border:1px solid #dbe4ea}
     .banner b{display:block;margin-bottom:4px}
     .banner .mini{display:inline-block;margin-top:10px}
 
-    .footer{margin-top:auto;border-top:1px solid #e5e7eb;padding:26px 0;color:#6b7280}
-    .footer .brand{font-weight:900}
-    .footer .brand .latam{font-weight:700;font-size:12px;margin-left:6px}
-    .footer nav{display:flex;gap:18px;justify-content:center;margin:10px 0;flex-wrap:wrap}
-    .social{display:flex;gap:16px;justify-content:center}
+    /* ===== Footer ===== */
+    .footer{margin-top:auto;border-top:1px solid #e5e7eb;padding:26px 0;background:#f7f9fa}
+    .footer-wrap{
+      max-width:1180px;margin:0 auto;padding:0 24px;
+      display:grid;grid-template-columns:220px 1fr 1fr 320px;gap:24px;align-items:start;
+      color:#6b7680;
+    }
+    .footer-logo{display:flex;align-items:flex-start;gap:8px;color:#a0a7ae}
+    .footer-logo .alura{font-size:36px;line-height:1;font-weight:900}
+    .footer-logo .latam{font-size:12px;letter-spacing:.8px}
+    .footer-col h4{margin:0 0 12px 0;font-weight:700;font-size:13px;color:#88929b;text-transform:uppercase}
+    .footer-links{display:flex;flex-direction:column;gap:10px;font-size:14px}
+    .footer-links a{color:#6f7a84}
+    .footer-links a:hover{color:#4f5a63}
 
+    .footer-social{justify-self:end;text-align:right}
+    .footer-social h4{margin:0 0 12px 0;font-weight:700;font-size:12px;color:#88929b;text-transform:uppercase}
+    .social-row{display:flex;gap:14px;justify-content:flex-end}
+    .social-ico{width:36px;height:36px;border-radius:50%;background:#97a4ae;display:grid;place-items:center}
+    .social-ico svg{width:20px;height:20px;fill:#f7f9fa;stroke:none}
+    .social-ico.instagram{background:#97a4ae}
+    .social-ico:hover{opacity:.9}
+
+    /* ===== Misc ===== */
     .ok{display:none;align-items:center;justify-content:center;min-height:50vh;font-size:22px}
     .ok.show{display:flex}
-
     .btn-green, .btn-gray, .banner, .card, .loginBox, .form input { border-radius:0; }
 
-    @media (prefers-reduced-motion:reduce){
-      .card{transition:none}
-      .card:hover,.card:focus-visible{transform:none}
-    }
     @media (max-width:1160px){
       .grid{flex-direction:column;align-items:center}
       .col-left,.col-right{width:100%;max-width:720px}
       .cards{grid-template-columns:repeat(2,1fr)}
+      .footer-wrap{grid-template-columns:1fr;gap:18px;text-align:left}
+      .footer-social{justify-self:start;text-align:left}
+      .social-row{justify-content:flex-start}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <!-- Header -->
     <header class="header">
       <div class="container header-row">
-        <div class="brand"><div style="font-size:28px;line-height:1">alura</div><div class="latam">LATAM</div></div>
-        <div class="cta"><span>¿TODAVÍA NO TIENES ACCESO?</span><a class="btn-green" href="https://www.aluracursos.com/planes" target="_blank" rel="noreferrer">NUESTROS PLANES</a></div>
+        <div class="brand">
+          <div style="font-size:28px;line-height:1">alura</div>
+          <div class="latam">LATAM</div>
+        </div>
+        <div class="cta">
+          <span>¿TODAVÍA NO TIENES ACCESO?</span>
+          <a class="btn-green" href="https://www.aluracursos.com/planes" target="_blank" rel="noreferrer">NUESTROS PLANES</a>
+        </div>
       </div>
     </header>
 
+    <!-- Main -->
     <main class="container">
       <div class="grid">
         <!-- Login -->
@@ -140,7 +168,6 @@
         <!-- Mosaicos 3x2 -->
         <div class="col-right">
           <h2 class="right-title">¿Todavía no eres alumno de Alura?</h2>
-
           <div class="cards">
             <!-- Programación -->
             <a class="card c1" href="https://www.aluracursos.com/cursos-online-programacao" target="_blank" rel="noreferrer">
@@ -163,7 +190,7 @@
                   <path d="M14 6h4v4"></path>
                   <path d="M10 18H6v-4"></path>
                   <path d="M18 14v4h-4"></path>
-                  <path d="M12.3 8.7l.55 1.1 1.2.18-.92.85.18 1.2-1.01-.56-1.01.56.18-1.2-.92-.85 1.2-.18z"></path>
+                  <path d="M12.25 8.7l.55 1.12 1.22.18-.92.85.18 1.2-1.01-.56-1.01.56.18-1.2-.92-.85 1.22-.18z"></path>
                 </svg>
               </span>
               <b>Front End</b>
@@ -198,29 +225,30 @@
               <span>IA para Front End, Inmersión con IA, IA para Datos,</span>
             </a>
 
-            <!-- Innovación y Gestión (dos arcos + flecha entrante) -->
+            <!-- Innovación y Gestión (dos círculos cortados + flecha grande) -->
             <a class="card c5" href="https://www.aluracursos.com/cursos-online-inovacao-gestao" target="_blank" rel="noreferrer">
               <span class="card-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <!-- arcos (cortados abajo-derecha) -->
-                  <path d="M7 12
-                           A7 7 0 0 1 16.5 7.5" />
-                  <path d="M9 12
-                           A5 5 0 0 1 15 9.5" />
-                  <!-- flecha/puntero entrando desde abajo-derecha -->
-                  <path d="M11 13l4.6 1.8-2.8 2.8z" />
+                  <!-- arcos (porciones de círculos), cortados abajo-derecha -->
+                  <path d="M7 12 A7 7 0 0 1 17 7" />
+                  <path d="M9 12 A5 5 0 0 1 15 9" />
+                  <!-- flecha entrante grande -->
+                  <path d="M11 13l6 2.2-3.6 3.6z" />
                 </svg>
               </span>
               <b>Innovación y Gestión</b>
               <span>Transformación Ágil, Negociación y Comunicación, Liderazgo y Gestión de Equipos,</span>
             </a>
 
-            <!-- DevOps (engranaje línea continua + centro) -->
+            <!-- DevOps (engrane circular de 8 puntos + centro) -->
             <a class="card c6" href="https://www.aluracursos.com/cursos-online-devops" target="_blank" rel="noreferrer">
               <span class="card-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 4.2l1.35.32 1.02 1.36 1.5.56.3 1.45 1.17 1.08-.3 1.45.95 1.32-.95 1.32.3 1.45-1.17 1.08-.3 1.45-1.5.56-1.02 1.36-1.35.32-1.35-.32-1.02-1.36-1.5-.56-.3-1.45-1.17-1.08.3-1.45-.95-1.32.95-1.32-.3-1.45 1.17-1.08.3-1.45 1.5-.56 1.02-1.36 1.35-.32Z"></path>
-                  <circle cx="12" cy="12" r="2.6" fill="#fff" stroke="none"></circle>
+                  <!-- diente circular 8 lóbulos -->
+                  <path d="M12 4.4
+                           l1.2.3  .9 1.2  1.4.5  .28 1.2 1.1 1 -.28 1.2 .9 1.2 -.9 1.2 .28 1.2 -1.1 1 -.28 1.2 -1.4.5 -.9 1.2 -1.2.3
+                           -1.2-.3 -.9-1.2 -1.4-.5 -.28-1.2 -1.1-1 .28-1.2 -.9-1.2 .9-1.2 -.28-1.2 1.1-1 .28-1.2 1.4-.5 .9-1.2 1.2-.3Z"></path>
+                  <circle cx="12" cy="12" r="2.2" fill="#fff" stroke="none"></circle>
                 </svg>
               </span>
               <b>DevOps</b>
@@ -239,39 +267,93 @@
       <div class="ok" id="okMsg">✅ Login correcto — Estructura lista para Fase 2</div>
     </main>
 
+    <!-- Footer (igual al original, con iconos) -->
     <footer class="footer">
-      <div class="container" style="text-align:center">
-        <div class="brand"><div style="font-size:22px;line-height:1">alura</div><div class="latam">LATAM</div></div>
-        <nav>
-          <a href="https://www.aluracursos.com/instructores" target="_blank" rel="noreferrer">INSTRUCTORES</a>
-          <a href="https://www.aluracursos.com/blog" target="_blank" rel="noreferrer">BLOG</a>
-          <a href="https://www.aluracursos.com/sobre" target="_blank" rel="noreferrer">SOBRE NOSOTROS</a>
-          <a href="https://soporte.aluracursos.com/es-LA/support/home" target="_blank" rel="noreferrer">PREGUNTAS FRECUENTES</a>
-        </nav>
-        <div class="social">
-          <a href="https://www.youtube.com/@aluracursos" target="_blank" rel="noreferrer">YouTube</a>
-          <a href="https://www.facebook.com/aluracursos" target="_blank" rel="noreferrer">Facebook</a>
-          <a href="https://www.instagram.com/aluracursos" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="https://www.linkedin.com/company/alura-latam/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <div class="footer-wrap">
+        <!-- Logo -->
+        <div class="footer-logo">
+          <div class="alura">alura</div>
+          <div class="latam">LATAM</div>
+        </div>
+
+        <!-- Columna 1 -->
+        <div class="footer-col">
+          <h4>&nbsp;</h4>
+          <div class="footer-links">
+            <a href="https://www.aluracursos.com/instructores" target="_blank" rel="noreferrer">INSTRUCTORES</a>
+            <a href="https://www.aluracursos.com/blog" target="_blank" rel="noreferrer">BLOG</a>
+            <a href="https://www.aluracursos.com/sobre" target="_blank" rel="noreferrer">SOBRE NOSOTROS</a>
+            <a href="https://soporte.aluracursos.com/es-LA/support/home" target="_blank" rel="noreferrer">PREGUNTAS FRECUENTES</a>
+          </div>
+        </div>
+
+        <!-- Columna 2 -->
+        <div class="footer-col">
+          <h4>&nbsp;</h4>
+          <div class="footer-links">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPD_drybwWcxBrwR_zGUVHaV4WA7_sMSo7I-NjbBabX3fqCg/viewform" target="_blank" rel="noreferrer">SUGERENCIA DE CURSOS</a>
+          </div>
+        </div>
+
+        <!-- Columna 3 (Graduación) -->
+        <div class="footer-col">
+          <h4>&nbsp;</h4>
+          <div class="footer-links">
+            <a href="https://www.fiap.com.br/graduacao/" target="_blank" rel="noreferrer">GRADUAÇÃO</a>
+            <a href="https://postech.fiap.com.br/" target="_blank" rel="noreferrer">PÓS-GRADUAÇÃO</a>
+            <a href="https://www.fiap.com.br/mba" target="_blank" rel="noreferrer">MBA</a>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-social" style="grid-column: 1 / -1; display:grid; grid-template-columns: 1fr auto; align-items:center;">
+          <h4>SÍGUENOS EN NUESTRAS REDES SOCIALES</h4>
+          <div class="social-row">
+            <!-- YouTube -->
+            <a class="social-ico" href="https://www.youtube.com/@aluracursos" target="_blank" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M22 12s0-3.2-.4-4.6c-.2-.8-.8-1.4-1.6-1.6C18.6 5.4 12 5.4 12 5.4s-6.6 0-8 .4c-.8.2-1.4.8-1.6 1.6C2 8.8 2 12 2 12s0 3.2.4 4.6c.2.8.8 1.4 1.6 1.6 1.4.4 8 .4 8 .4s6.6 0 8-.4c.8-.2 1.4-.8 1.6-1.6.4-1.4.4-4.6.4-4.6Z"/><path d="M10 9l5 3-5 3z" fill="#f7f9fa"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a class="social-ico" href="https://www.facebook.com/aluracursoslatam" target="_blank" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a class="social-ico instagram" href="https://www.instagram.com/aluralatam" target="_blank" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z"/><circle cx="12" cy="12" r="3.5" fill="#f7f9fa"/><circle cx="17.5" cy="6.5" r="1.2" fill="#f7f9fa"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a class="social-ico" href="https://www.linkedin.com/company/alura-latam/" target="_blank" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M6 9h3v10H6zM7.5 5.5a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4ZM11 9h3v1.6c.6-1 1.7-1.8 3.3-1.8 2.4 0 3.7 1.4 3.7 4.1V19h-3v-5c0-1.6-.6-2.4-1.9-2.4-1.3 0-2.1.9-2.1 2.4V19h-3V9z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
+    // Credenciales demo (Fase 1)
     const USERNAME = "roberto.migliolo@gmail.com";
     const PASSWORD_SHA256_HEX = "a0a949145c445c3aeac44c9e9e723caff2c43e9071816e815f92488ca1fd7821";
-    async function sha256Hex(text){const data=new TextEncoder().encode(text);const hash=await crypto.subtle.digest("SHA-256",data);return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join("")}
-    const form=document.getElementById("form"),email=document.getElementById("email"),pass=document.getElementById("pass"),error=document.getElementById("error"),okMsg=document.getElementById("okMsg");
+    async function sha256Hex(text){
+      const data=new TextEncoder().encode(text);
+      const hash=await crypto.subtle.digest("SHA-256",data);
+      return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join("");
+    }
+    const form=document.getElementById("form"),
+          email=document.getElementById("email"),
+          pass=document.getElementById("pass"),
+          error=document.getElementById("error"),
+          okMsg=document.getElementById("okMsg");
     form.addEventListener("submit",async e=>{
-      e.preventDefault();error.style.display="none";
+      e.preventDefault(); error.style.display="none";
       try{
         const okUser=email.value.trim().toLowerCase()===USERNAME.toLowerCase();
         const hash=await sha256Hex(pass.value);
         const okPass=hash===PASSWORD_SHA256_HEX.toLowerCase();
-        if(okUser&&okPass){document.querySelector(".grid").style.display="none";okMsg.classList.add("show");}
-        else{error.textContent="Credenciales inválidas";error.style.display="block";}
-      }catch(err){console.error(err);error.textContent="Error en autenticación";error.style.display="block";}
+        if(okUser&&okPass){ document.querySelector(".grid").style.display="none"; okMsg.classList.add("show"); }
+        else{ error.textContent="Credenciales inválidas"; error.style.display="block"; }
+      }catch(err){ console.error(err); error.textContent="Error en autenticación"; error.style.display="block"; }
     });
   </script>
 </body>

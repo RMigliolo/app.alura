@@ -29,49 +29,62 @@
     .col-left{width:520px}
     .col-right{width:660px}
 
-    /* ===== Login ===== */
-    .loginBox{background:#fff;border:1px solid #e5e7eb;padding:26px}
-    .title{margin:0;color:#6b7280;font-weight:900;font-size:28px}
-    .subtitle{margin:6px 0 18px 0;color:#9ca3af;font-size:14px}
-    .form{display:flex;flex-direction:column;gap:12px}
-    .form label{color:#9ca3af;font-size:14px}
-    .form input{height:42px;border:1px solid #d1d5db;padding:0 10px;font-family:inherit}
-    .btn-gray{height:46px;background:#7a848e;color:#fff;border:0;font-weight:900;cursor:pointer;letter-spacing:.5px}
-    .btn-gray:hover{background:#6a737c}
+    /* ===== LOGIN — pixel-perfect ===== */
+    .loginHeaderLogo{display:flex;align-items:flex-end;gap:8px;margin-left:6px;margin-bottom:6px;color:#a0a7ae}
+    .loginHeaderLogo .alura{font-size:46px;line-height:1;font-weight:900}
+    .loginHeaderLogo .latam{font-size:14px;letter-spacing:.8px;font-weight:800;margin-left:2px}
+
+    .loginBox{background:transparent;border:0;padding:6px 6px 0}
+    .loginTitle{
+      margin:10px 0 6px;color:#6b6b6b;font-weight:900;
+      font-size:44px; line-height:1.12; letter-spacing:.2px;
+      text-align:left;
+    }
+    .loginSubtitle{
+      margin:0 0 22px;color:#a3a3a3;font-size:18px;
+      text-align:left; font-weight:700;
+    }
+    .form{display:flex;flex-direction:column;gap:18px}
+    .form label{color:#7b7b7b;font-size:18px;font-weight:700}
+    .form input{
+      height:60px;border:1px solid #e6e6e6;border-radius:4px;
+      padding:0 14px;font-family:inherit;background:#fff;font-size:16px;
+    }
+    .btn-login{
+      width:360px;height:56px;margin:10px auto 0;
+      background:#7a848e;color:#fff;border:0;border-radius:4px;
+      font-weight:800;letter-spacing:.6px;cursor:pointer;
+    }
+    .btn-login:hover{background:#6f7982}
+    .forgot{
+      margin-top:20px;text-align:center;
+      color:#6b6b6b;font-weight:700;text-decoration:underline;
+    }
+
     .error{color:#dc2626;text-align:center;margin-top:6px;font-size:14px}
-    .center{text-align:center}
 
     /* ===== Mosaicos (3x2) ===== */
     .right-title{color:#6b7280;font-size:28px;font-weight:900;margin:6px 0 16px 0}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .card{
       position:relative; display:block; color:#fff;
-      padding:16px; padding-top:52px; /* espacio icono */
+      padding:16px; padding-top:52px;
       border:1px solid rgba(0,0,0,.06);
       min-height:120px;
       transition:transform .18s ease, filter .18s ease, box-shadow .18s ease;
       box-shadow:0 0 0 1px rgba(0,0,0,.02) inset;
       outline:none; overflow:hidden;
     }
-    /* Barra superior de tono más claro (6px) */
-    .card::before{
-      content:""; position:absolute; top:0; left:0; right:0; height:6px;
-      background:currentColor; opacity:1; pointer-events:none;
-    }
-    /* Hover: aclarar 3% + sombra muy tenue */
-    .card:hover,.card:focus-visible{
-      transform:translateY(-4px);
-      filter:brightness(1.03);
-      box-shadow:0 5px 10px rgba(0,0,0,.07);
-    }
-    .card:focus-visible{
-      box-shadow:0 5px 10px rgba(0,0,0,.07),0 0 0 3px rgba(255,255,255,.65) inset;
-    }
+    /* Barra superior clara (6px) */
+    .card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:currentColor}
+    /* Hover: aclarar + sombra tenue + micro-lift */
+    .card:hover,.card:focus-visible{transform:translateY(-4px);filter:brightness(1.03);box-shadow:0 5px 10px rgba(0,0,0,.07)}
+    .card:focus-visible{box-shadow:0 5px 10px rgba(0,0,0,.07),0 0 0 3px rgba(255,255,255,.65) inset}
 
     .card b{display:block;font-size:16px;margin-bottom:6px;line-height:1.15;font-weight:900}
     .card span{font-size:12px;line-height:1.28;color:rgba(255,255,255,.98);font-style:italic;letter-spacing:.1px}
 
-    /* Iconos */
+    /* Iconos (trazo fino) */
     .card-icon{position:absolute;top:14px;left:12px;width:28px;height:28px;opacity:.98}
     .card-icon svg{width:100%;height:100%}
     .card-icon *{stroke:#fff;fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
@@ -99,30 +112,27 @@
     .footer-logo{display:flex;align-items:flex-start;gap:8px;color:#a0a7ae}
     .footer-logo .alura{font-size:36px;line-height:1;font-weight:900}
     .footer-logo .latam{font-size:12px;letter-spacing:.8px}
-    .footer-col h4{margin:0 0 12px 0;font-weight:700;font-size:13px;color:#88929b;text-transform:uppercase}
     .footer-links{display:flex;flex-direction:column;gap:10px;font-size:14px}
     .footer-links a{color:#6f7a84}
     .footer-links a:hover{color:#4f5a63}
-
-    .footer-social{justify-self:end;text-align:right}
+    .footer-social{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center}
     .footer-social h4{margin:0 0 12px 0;font-weight:700;font-size:12px;color:#88929b;text-transform:uppercase}
-    .social-row{display:flex;gap:14px;justify-content:flex-end}
-    .social-ico{width:36px;height:36px;border-radius:50%;background:#97a4ae;display:grid;place-items:center}
-    .social-ico svg{width:20px;height:20px;fill:#f7f9fa;stroke:none}
-    .social-ico.instagram{background:#97a4ae}
+    .social-row{display:flex;gap:14px}
+    .social-ico{width:40px;height:40px;border-radius:50%;background:#8f9aa3;display:grid;place-items:center}
+    .social-ico svg{width:22px;height:22px;stroke:none;fill:#ffffff}
     .social-ico:hover{opacity:.9}
 
     /* ===== Misc ===== */
     .ok{display:none;align-items:center;justify-content:center;min-height:50vh;font-size:22px}
     .ok.show{display:flex}
-    .btn-green, .btn-gray, .banner, .card, .loginBox, .form input { border-radius:0; }
+    .btn-green, .btn-gray, .banner, .form input { border-radius:0; } /* tarjetas siguen cuadradas */
 
     @media (max-width:1160px){
       .grid{flex-direction:column;align-items:center}
       .col-left,.col-right{width:100%;max-width:720px}
       .cards{grid-template-columns:repeat(2,1fr)}
-      .footer-wrap{grid-template-columns:1fr;gap:18px;text-align:left}
-      .footer-social{justify-self:start;text-align:left}
+      .footer-wrap{grid-template-columns:1fr;gap:18px}
+      .footer-social{grid-column:auto}
       .social-row{justify-content:flex-start}
     }
   </style>
@@ -146,21 +156,29 @@
     <!-- Main -->
     <main class="container">
       <div class="grid">
-        <!-- Login -->
+        <!-- LOGIN (ajustado a la imagen) -->
         <div class="col-left">
+          <div class="loginHeaderLogo">
+            <div class="alura">alura</div>
+            <div class="latam">LATAM</div>
+          </div>
           <div class="loginBox">
-            <h1 class="title">¿Ya es nuestro alumno?</h1>
-            <p class="subtitle">¡Realice login y tenga una excelente aula!</p>
+            <h1 class="loginTitle">¿Ya es nuestro alumno?</h1>
+            <p class="loginSubtitle">¡Realice login y tenga una excelente aula!</p>
             <form id="form" class="form">
-              <label for="email">Email</label>
-              <input id="email" type="email" required />
-              <label for="pass">Contraseña</label>
-              <input id="pass" type="password" required />
-              <button class="btn-gray" type="submit">ENTRAR</button>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" required />
+              </div>
+              <div>
+                <label for="pass">Contraseña</label>
+                <input id="pass" type="password" required />
+              </div>
+              <button class="btn-login" type="submit">ENTRAR</button>
               <p class="error" id="error" style="display:none;"></p>
-              <p class="center" style="margin-top:8px">
-                <a href="https://app.aluracursos.com/forgetPassword" target="_blank" rel="noreferrer">Olvidé mi contraseña</a>
-              </p>
+              <a class="forgot" href="https://app.aluracursos.com/forgetPassword" target="_blank" rel="noreferrer">
+                Olvidé mi contraseña
+              </a>
             </form>
           </div>
         </div>
@@ -182,15 +200,16 @@
               <span>Lógica de Programación, Java, NodeJS,</span>
             </a>
 
-            <!-- Front End -->
+            <!-- Front End (2 esquinas + asterisco) -->
             <a class="card c2" href="https://www.aluracursos.com/cursos-online-front-end" target="_blank" rel="noreferrer">
               <span class="card-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <!-- esquina sup-izq -->
                   <path d="M6 10V6h4"></path>
-                  <path d="M14 6h4v4"></path>
-                  <path d="M10 18H6v-4"></path>
+                  <!-- esquina inf-der -->
                   <path d="M18 14v4h-4"></path>
-                  <path d="M12.25 8.7l.55 1.12 1.22.18-.92.85.18 1.2-1.01-.56-1.01.56.18-1.2-.92-.85 1.22-.18z"></path>
+                  <!-- asterisco centro -->
+                  <path d="M12 8.4v4M10.2 10.4h3.6M10.8 9.2l2.4 2.4M13.2 9.2l-2.4 2.4"></path>
                 </svg>
               </span>
               <b>Front End</b>
@@ -225,30 +244,41 @@
               <span>IA para Front End, Inmersión con IA, IA para Datos,</span>
             </a>
 
-            <!-- Innovación y Gestión (dos círculos cortados + flecha grande) -->
+            <!-- Innovación y Gestión: arcos ~250° + flecha definida -->
             <a class="card c5" href="https://www.aluracursos.com/cursos-online-inovacao-gestao" target="_blank" rel="noreferrer">
               <span class="card-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <!-- arcos (porciones de círculos), cortados abajo-derecha -->
-                  <path d="M7 12 A7 7 0 0 1 17 7" />
-                  <path d="M9 12 A5 5 0 0 1 15 9" />
-                  <!-- flecha entrante grande -->
-                  <path d="M11 13l6 2.2-3.6 3.6z" />
+                  <!-- Arcos (~250°) dejan hueco donde entra la flecha -->
+                  <path d="M7.2 15.8 A 6.6 6.6 0 1 1 16.8 8.2" />
+                  <path d="M8.6 14.9 A 4.8 4.8 0 1 1 15.4 9.1" />
+                  <!-- Flecha: vástago + triángulo sólido más grande -->
+                  <path d="M10.8 13.1 L16.9 15.1" />
+                  <path d="M16.9 15.1 L13.8 18.8 L19.1 16.7 Z" fill="#ffffff" stroke="none"/>
                 </svg>
               </span>
               <b>Innovación y Gestión</b>
               <span>Transformación Ágil, Negociación y Comunicación, Liderazgo y Gestión de Equipos,</span>
             </a>
 
-            <!-- DevOps (engrane circular de 8 puntos + centro) -->
+            <!-- DevOps: engrane circular con 8 cuadros + centro -->
             <a class="card c6" href="https://www.aluracursos.com/cursos-online-devops" target="_blank" rel="noreferrer">
               <span class="card-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <!-- diente circular 8 lóbulos -->
-                  <path d="M12 4.4
-                           l1.2.3  .9 1.2  1.4.5  .28 1.2 1.1 1 -.28 1.2 .9 1.2 -.9 1.2 .28 1.2 -1.1 1 -.28 1.2 -1.4.5 -.9 1.2 -1.2.3
-                           -1.2-.3 -.9-1.2 -1.4-.5 -.28-1.2 -1.1-1 .28-1.2 -.9-1.2 .9-1.2 -.28-1.2 1.1-1 .28-1.2 1.4-.5 .9-1.2 1.2-.3Z"></path>
-                  <circle cx="12" cy="12" r="2.2" fill="#fff" stroke="none"></circle>
+                  <!-- anillo -->
+                  <circle cx="12" cy="12" r="6.4"></circle>
+                  <!-- dientes (cuadros) -->
+                  <g transform="translate(12 12)">
+                    <rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect>
+                    <g transform="rotate(45)"><rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect></g>
+                    <g transform="rotate(90)"><rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect></g>
+                    <g transform="rotate(135)"><rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect></g>
+                    <g transform="rotate(180)"><rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect></g>
+                    <g transform="rotate(225)"><rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect></g>
+                    <g transform="rotate(270)"><rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect></g>
+                    <g transform="rotate(315)"><rect x="-1.2" y="-9.2" width="2.4" height="2.8" rx=".3"></rect></g>
+                  </g>
+                  <!-- centro -->
+                  <circle cx="12" cy="12" r="2.1" fill="#fff" stroke="none"></circle>
                 </svg>
               </span>
               <b>DevOps</b>
@@ -267,63 +297,57 @@
       <div class="ok" id="okMsg">✅ Login correcto — Estructura lista para Fase 2</div>
     </main>
 
-    <!-- Footer (igual al original, con iconos) -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="footer-wrap">
-        <!-- Logo -->
         <div class="footer-logo">
           <div class="alura">alura</div>
           <div class="latam">LATAM</div>
         </div>
 
-        <!-- Columna 1 -->
-        <div class="footer-col">
-          <h4>&nbsp;</h4>
-          <div class="footer-links">
-            <a href="https://www.aluracursos.com/instructores" target="_blank" rel="noreferrer">INSTRUCTORES</a>
-            <a href="https://www.aluracursos.com/blog" target="_blank" rel="noreferrer">BLOG</a>
-            <a href="https://www.aluracursos.com/sobre" target="_blank" rel="noreferrer">SOBRE NOSOTROS</a>
-            <a href="https://soporte.aluracursos.com/es-LA/support/home" target="_blank" rel="noreferrer">PREGUNTAS FRECUENTES</a>
-          </div>
+        <div class="footer-links">
+          <a href="https://www.aluracursos.com/instructores" target="_blank" rel="noreferrer">INSTRUCTORES</a>
+          <a href="https://www.aluracursos.com/blog" target="_blank" rel="noreferrer">BLOG</a>
+          <a href="https://www.aluracursos.com/sobre" target="_blank" rel="noreferrer">SOBRE NOSOTROS</a>
+          <a href="https://soporte.aluracursos.com/es-LA/support/home" target="_blank" rel="noreferrer">PREGUNTAS FRECUENTES</a>
         </div>
 
-        <!-- Columna 2 -->
-        <div class="footer-col">
-          <h4>&nbsp;</h4>
-          <div class="footer-links">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPD_drybwWcxBrwR_zGUVHaV4WA7_sMSo7I-NjbBabX3fqCg/viewform" target="_blank" rel="noreferrer">SUGERENCIA DE CURSOS</a>
-          </div>
+        <div class="footer-links">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPD_drybwWcxBrwR_zGUVHaV4WA7_sMSo7I-NjbBabX3fqCg/viewform" target="_blank" rel="noreferrer">SUGERENCIA DE CURSOS</a>
+          <a href="https://www.fiap.com.br/graduacao/" target="_blank" rel="noreferrer">GRADUAÇÃO</a>
+          <a href="https://postech.fiap.com.br/" target="_blank" rel="noreferrer">PÓS-GRADUAÇÃO</a>
+          <a href="https://www.fiap.com.br/mba" target="_blank" rel="noreferrer">MBA</a>
         </div>
 
-        <!-- Columna 3 (Graduación) -->
-        <div class="footer-col">
-          <h4>&nbsp;</h4>
-          <div class="footer-links">
-            <a href="https://www.fiap.com.br/graduacao/" target="_blank" rel="noreferrer">GRADUAÇÃO</a>
-            <a href="https://postech.fiap.com.br/" target="_blank" rel="noreferrer">PÓS-GRADUAÇÃO</a>
-            <a href="https://www.fiap.com.br/mba" target="_blank" rel="noreferrer">MBA</a>
-          </div>
-        </div>
-
-        <!-- Social -->
-        <div class="footer-social" style="grid-column: 1 / -1; display:grid; grid-template-columns: 1fr auto; align-items:center;">
+        <div class="footer-social">
           <h4>SÍGUENOS EN NUESTRAS REDES SOCIALES</h4>
           <div class="social-row">
             <!-- YouTube -->
             <a class="social-ico" href="https://www.youtube.com/@aluracursos" target="_blank" aria-label="YouTube">
-              <svg viewBox="0 0 24 24"><path d="M22 12s0-3.2-.4-4.6c-.2-.8-.8-1.4-1.6-1.6C18.6 5.4 12 5.4 12 5.4s-6.6 0-8 .4c-.8.2-1.4.8-1.6 1.6C2 8.8 2 12 2 12s0 3.2.4 4.6c.2.8.8 1.4 1.6 1.6 1.4.4 8 .4 8 .4s6.6 0 8-.4c.8-.2 1.4-.8 1.6-1.6.4-1.4.4-4.6.4-4.6Z"/><path d="M10 9l5 3-5 3z" fill="#f7f9fa"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="7" width="16" height="10" rx="3" />
+                <path d="M10 10.5l4 2.5-4 2.5" fill="#ffffff"/>
+              </svg>
             </a>
             <!-- Facebook -->
             <a class="social-ico" href="https://www.facebook.com/aluracursoslatam" target="_blank" aria-label="Facebook">
-              <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 5h-2.2C9.8 5 9 6 9 7.9V10H7v3h2v6h3v-6h2.5l.8-3H12V8.2c0-.7.3-1.2 1.1-1.2H17V5h-3z"/>
+              </svg>
             </a>
             <!-- Instagram -->
-            <a class="social-ico instagram" href="https://www.instagram.com/aluralatam" target="_blank" aria-label="Instagram">
-              <svg viewBox="0 0 24 24"><path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z"/><circle cx="12" cy="12" r="3.5" fill="#f7f9fa"/><circle cx="17.5" cy="6.5" r="1.2" fill="#f7f9fa"/></svg>
+            <a class="social-ico" href="https://www.instagram.com/aluralatam" target="_blank" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="5" width="14" height="14" rx="4" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="3.8" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+                <circle cx="17" cy="7" r="1.2" />
+              </svg>
             </a>
             <!-- LinkedIn -->
             <a class="social-ico" href="https://www.linkedin.com/company/alura-latam/" target="_blank" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24"><path d="M6 9h3v10H6zM7.5 5.5a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4ZM11 9h3v1.6c.6-1 1.7-1.8 3.3-1.8 2.4 0 3.7 1.4 3.7 4.1V19h-3v-5c0-1.6-.6-2.4-1.9-2.4-1.3 0-2.1.9-2.1 2.4V19h-3V9z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9h3v10H6zM7.5 5.5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6Zm4.5 3.5h3v1.7c.7-1.1 1.8-1.9 3.4-1.9 2.4 0 3.6 1.4 3.6 4.1V19h-3v-5c0-1.6-.6-2.4-1.9-2.4-1.2 0-2.1.8-2.1 2.4V19h-3V9z"/>
+              </svg>
             </a>
           </div>
         </div>

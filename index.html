@@ -11,11 +11,9 @@
     body{margin:0;font-family:Lato,system-ui,-apple-system,Segoe UI,Roboto,Arial}
     a{color:inherit;text-decoration:none}
 
-    /* ===== Layout ===== */
     .wrap{min-height:100vh;background:#f5f7f8;display:flex;flex-direction:column}
     .container{max-width:1180px;margin:0 auto;padding:0 24px}
 
-    /* ===== Header ===== */
     .header{background:#fff;border-top:4px solid #2A7AE4;border-bottom:1px solid #e5e7eb}
     .header-row{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;align-items:center;gap:6px;color:#2b2b2b;font-weight:900;letter-spacing:.2px}
@@ -24,12 +22,10 @@
     .btn-green{background:#3ad27a;color:#fff;padding:8px 12px;font-weight:800;border:0}
     .btn-green:hover{opacity:.92}
 
-    /* ===== Grid principal ===== */
     .grid{display:flex;gap:48px;justify-content:center;align-items:flex-start;padding:40px 0}
     .col-left{width:520px}
     .col-right{width:660px}
 
-    /* ===== Login ===== */
     .loginBox{background:#fff;border:1px solid #e5e7eb;padding:26px}
     .title{margin:0;color:#6b7280;font-weight:900;font-size:28px}
     .subtitle{margin:6px 0 18px 0;color:#9ca3af;font-size:14px}
@@ -41,107 +37,63 @@
     .error{color:#dc2626;text-align:center;margin-top:6px;font-size:14px}
     .center{text-align:center}
 
-    /* ===== Mosaicos (3x2) ===== */
     .right-title{color:#6b7280;font-size:28px;font-weight:900;margin:6px 0 16px 0}
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
     .card{
-      position:relative;
-      display:block;
-      color:#fff;
-      padding:16px;
-      padding-top:52px;                        /* espacio para el icono */
+      position:relative; display:block; color:#fff;
+      padding:16px; padding-top:52px;
       border:1px solid rgba(0,0,0,.06);
-      min-height:120px;                         /* crece si el texto lo requiere */
+      min-height:120px;
       transition:transform .18s ease, filter .18s ease, box-shadow .18s ease;
       box-shadow:0 0 0 1px rgba(0,0,0,.02) inset;
-      will-change:transform,filter;
-      outline:none;
-      overflow:hidden;
+      outline:none; overflow:hidden;
     }
-    /* Cinta blanca: rectángulo bien definido (con leve degradado interno) */
+    /* Barra superior del mismo color, más clara (6px) */
     .card::before{
-      content:"";
-      position:absolute;
-      top:0;left:0;right:0;height:8px;
-      background:linear-gradient(to bottom,
-        rgba(255,255,255,.90) 0%,
-        rgba(255,255,255,.70) 70%,
-        rgba(255,255,255,.58) 100%);
-      /* Bordes rectos; sin radios */
-      opacity:.95;
-      transition:opacity .2s ease;
-      pointer-events:none;
+      content:""; position:absolute; top:0; left:0; right:0; height:6px;
+      background: currentColor;
+      opacity:1; pointer-events:none;
     }
-    /* Hover y Focus — aclarar (no oscurecer) + elevación suave */
-    .card:hover,
-    .card:focus-visible{
+    /* Hover: aclarar y sombra muy tenue */
+    .card:hover, .card:focus-visible{
       transform:translateY(-4px);
       filter:brightness(1.03);
-      box-shadow:0 8px 18px rgba(0,0,0,.12);
+      box-shadow:0 5px 10px rgba(0,0,0,.07);
     }
-    .card:hover::before,
-    .card:focus-visible::before{ opacity:1; }
     .card:focus-visible{
-      box-shadow:0 8px 18px rgba(0,0,0,.12),0 0 0 3px rgba(255,255,255,.7) inset;
+      box-shadow:0 5px 10px rgba(0,0,0,.07), 0 0 0 3px rgba(255,255,255,.65) inset;
     }
 
-    .card b{
-      display:block;
-      font-size:16px;
-      margin-bottom:6px;
-      line-height:1.15;
-      font-weight:900;
-    }
-    .card span{
-      font-size:12px;
-      line-height:1.28;
-      color:rgba(255,255,255,.98);
-      font-style:italic;                        /* como en la página real */
-      letter-spacing:.1px;
-    }
+    .card b{display:block;font-size:16px;margin-bottom:6px;line-height:1.15;font-weight:900}
+    .card span{font-size:12px;line-height:1.28;color:rgba(255,255,255,.98);font-style:italic;letter-spacing:.1px}
 
-    /* Iconos refinados (trazo delgado) */
-    .card-icon{
-      position:absolute;
-      top:14px; left:12px;
-      width:28px; height:28px;
-      opacity:.98;
-    }
+    /* Iconos */
+    .card-icon{position:absolute;top:14px;left:12px;width:28px;height:28px;opacity:.98}
     .card-icon svg{width:100%;height:100%}
-    .card-icon *{
-      stroke:#fff; fill:none;
-      stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;
-    }
+    .card-icon *{stroke:#fff;fill:none;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
 
-    /* Colores exactos */
-    .c1{background:#00c86f}  /* Programación */
-    .c2{background:#6bd1ff}  /* Front End */
-    .c3{background:#9cd33b}  /* Data Science */
-    .c4{background:#7b71ff}  /* Inteligencia Artificial */
-    .c5{background:#ff8c2a}  /* Innovación y Gestión */
-    .c6{background:#f16165}  /* DevOps */
+    /* Colores base + barra clara */
+    .c1{background:#00c86f}  .c1::before{background:#2fda8b}
+    .c2{background:#6bd1ff}  .c2::before{background:#89dcff}
+    .c3{background:#9cd33b}  .c3::before{background:#b8e260}
+    .c4{background:#7b71ff}  .c4::before{background:#9a93ff}
+    .c5{background:#ff8c2a}  .c5::before{background:#ffa64f}
+    .c6{background:#f16165}  .c6::before{background:#f47f82}
 
-    /* ===== Banner ===== */
     .banner{display:block;background:#e9eff3;padding:16px;margin-top:14px;color:#374151;border:1px solid #dbe4ea}
     .banner b{display:block;margin-bottom:4px}
     .banner .mini{display:inline-block;margin-top:10px}
 
-    /* ===== Footer ===== */
     .footer{margin-top:auto;border-top:1px solid #e5e7eb;padding:26px 0;color:#6b7280}
     .footer .brand{font-weight:900}
     .footer .brand .latam{font-weight:700;font-size:12px;margin-left:6px}
     .footer nav{display:flex;gap:18px;justify-content:center;margin:10px 0;flex-wrap:wrap}
     .social{display:flex;gap:16px;justify-content:center}
 
-    /* ===== Placeholder Fase 2 ===== */
     .ok{display:none;align-items:center;justify-content:center;min-height:50vh;font-size:22px}
     .ok.show{display:flex}
 
-    /* ===== Todo rectangular ===== */
     .btn-green, .btn-gray, .banner, .card, .loginBox, .form input { border-radius:0; }
 
     @media (prefers-reduced-motion:reduce){
@@ -157,21 +109,13 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- Header -->
     <header class="header">
       <div class="container header-row">
-        <div class="brand">
-          <div style="font-size:28px;line-height:1">alura</div>
-          <div class="latam">LATAM</div>
-        </div>
-        <div class="cta">
-          <span>¿TODAVÍA NO TIENES ACCESO?</span>
-          <a class="btn-green" href="https://www.aluracursos.com/planes" target="_blank" rel="noreferrer">NUESTROS PLANES</a>
-        </div>
+        <div class="brand"><div style="font-size:28px;line-height:1">alura</div><div class="latam">LATAM</div></div>
+        <div class="cta"><span>¿TODAVÍA NO TIENES ACCESO?</span><a class="btn-green" href="https://www.aluracursos.com/planes" target="_blank" rel="noreferrer">NUESTROS PLANES</a></div>
       </div>
     </header>
 
-    <!-- Main -->
     <main class="container">
       <div class="grid">
         <!-- Login -->
@@ -193,15 +137,14 @@
           </div>
         </div>
 
-        <!-- Mosaicos 3x2 con cinta y hover aclarado -->
+        <!-- Mosaicos 3x2 -->
         <div class="col-right">
           <h2 class="right-title">¿Todavía no eres alumno de Alura?</h2>
 
           <div class="cards">
-            <!-- Fila 1: Programación | Front End | Data Science -->
+            <!-- Programación -->
             <a class="card c1" href="https://www.aluracursos.com/cursos-online-programacao" target="_blank" rel="noreferrer">
               <span class="card-icon">
-                <!-- Programación: terminal/chevron + línea -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
                   <path d="M8 12l-2 2 2 2"></path>
@@ -212,71 +155,72 @@
               <span>Lógica de Programación, Java, NodeJS,</span>
             </a>
 
+            <!-- Front End -->
             <a class="card c2" href="https://www.aluracursos.com/cursos-online-front-end" target="_blank" rel="noreferrer">
               <span class="card-icon">
-                <!-- Front End: esquinas + destello -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M6 10V6h4"></path>
                   <path d="M14 6h4v4"></path>
                   <path d="M10 18H6v-4"></path>
                   <path d="M18 14v4h-4"></path>
-                  <path d="M12.2 8.8l.55 1.1 1.23.19-0.94.85.18 1.22-1.02-.56-1.02.56.18-1.22-.94-.85 1.23-.19z"></path>
+                  <path d="M12.3 8.7l.55 1.1 1.2.18-.92.85.18 1.2-1.01-.56-1.01.56.18-1.2-.92-.85 1.2-.18z"></path>
                 </svg>
               </span>
               <b>Front End</b>
               <span>HTML y CSS, Angular, React,</span>
             </a>
 
+            <!-- Data Science (átomo en X) -->
             <a class="card c3" href="https://www.aluracursos.com/cursos-online-data-science" target="_blank" rel="noreferrer">
               <span class="card-icon">
-                <!-- Data Science: átomo -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="2" fill="#fff" stroke="none"></circle>
-                  <ellipse cx="12" cy="12" rx="8" ry="4"></ellipse>
-                  <ellipse cx="12" cy="12" rx="4" ry="8" transform="rotate(45 12 12)"></ellipse>
-                  <ellipse cx="12" cy="12" rx="4" ry="8" transform="rotate(-45 12 12)"></ellipse>
+                  <circle cx="12" cy="12" r="2.2" fill="#fff" stroke="none"></circle>
+                  <ellipse cx="12" cy="12" rx="8" ry="4" transform="rotate(45 12 12)"></ellipse>
+                  <ellipse cx="12" cy="12" rx="8" ry="4" transform="rotate(-45 12 12)"></ellipse>
                 </svg>
               </span>
               <b>Data Science</b>
               <span>Data Science, Excel, Business Intelligence,</span>
             </a>
 
-            <!-- Fila 2: Inteligencia Artificial | Innovación y Gestión | DevOps -->
+            <!-- Inteligencia Artificial -->
             <a class="card c4" href="https://www.aluracursos.com/cursos-online-inteligencia-artificial" target="_blank" rel="noreferrer">
               <span class="card-icon">
-                <!-- IA: nodos conectados en recuadro -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="4" y="4" width="16" height="16" rx="3" ry="3"></rect>
-                  <circle cx="9" cy="9" r="1.7" fill="#fff" stroke="none"></circle>
-                  <circle cx="15" cy="8" r="1.7" fill="#fff" stroke="none"></circle>
-                  <circle cx="14" cy="15" r="1.7" fill="#fff" stroke="none"></circle>
-                  <path d="M10.5 9.6 13 14M10.4 9.0 13.3 8.2M15 9.6l-1 4.7"></path>
+                  <circle cx="9" cy="9" r="1.6" fill="#fff" stroke="none"></circle>
+                  <circle cx="15" cy="8" r="1.6" fill="#fff" stroke="none"></circle>
+                  <circle cx="14" cy="15" r="1.6" fill="#fff" stroke="none"></circle>
+                  <path d="M10.4 9.5 13 14M10.3 8.9 13.2 8.2M14.9 9.5l-1.1 4.6"></path>
                 </svg>
               </span>
               <b>Inteligencia Artificial</b>
               <span>IA para Front End, Inmersión con IA, IA para Datos,</span>
             </a>
 
+            <!-- Innovación y Gestión (dos arcos + flecha entrante) -->
             <a class="card c5" href="https://www.aluracursos.com/cursos-online-inovacao-gestao" target="_blank" rel="noreferrer">
               <span class="card-icon">
-                <!-- Innovación y Gestión: flecha circular + cursor -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15.5 7A6.5 6.5 0 1 1 9 18"></path>
-                  <path d="M15.5 7h-4"></path>
-                  <path d="M15.5 7l-.5-3"></path>
-                  <path d="M9 13l5 2-3 3z"></path>
+                  <!-- arcos (cortados abajo-derecha) -->
+                  <path d="M7 12
+                           A7 7 0 0 1 16.5 7.5" />
+                  <path d="M9 12
+                           A5 5 0 0 1 15 9.5" />
+                  <!-- flecha/puntero entrando desde abajo-derecha -->
+                  <path d="M11 13l4.6 1.8-2.8 2.8z" />
                 </svg>
               </span>
               <b>Innovación y Gestión</b>
               <span>Transformación Ágil, Negociación y Comunicación, Liderazgo y Gestión de Equipos,</span>
             </a>
 
+            <!-- DevOps (engranaje línea continua + centro) -->
             <a class="card c6" href="https://www.aluracursos.com/cursos-online-devops" target="_blank" rel="noreferrer">
               <span class="card-icon">
-                <!-- DevOps: engrane fino -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="2.4" fill="#fff" stroke="none"></circle>
-                  <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.2 5.2l1.2 1.2M17.6 17.6l1.2 1.2M5.2 18.8l1.2-1.2M17.6 6.4l1.2-1.2"></path>
+                  <path d="M12 4.2l1.35.32 1.02 1.36 1.5.56.3 1.45 1.17 1.08-.3 1.45.95 1.32-.95 1.32.3 1.45-1.17 1.08-.3 1.45-1.5.56-1.02 1.36-1.35.32-1.35-.32-1.02-1.36-1.5-.56-.3-1.45-1.17-1.08.3-1.45-.95-1.32.95-1.32-.3-1.45 1.17-1.08.3-1.45 1.5-.56 1.02-1.36 1.35-.32Z"></path>
+                  <circle cx="12" cy="12" r="2.6" fill="#fff" stroke="none"></circle>
                 </svg>
               </span>
               <b>DevOps</b>
@@ -292,17 +236,12 @@
         </div>
       </div>
 
-      <!-- Placeholder “logueado” (Fase 2) -->
       <div class="ok" id="okMsg">✅ Login correcto — Estructura lista para Fase 2</div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container" style="text-align:center">
-        <div class="brand">
-          <div style="font-size:22px;line-height:1">alura</div>
-          <div class="latam">LATAM</div>
-        </div>
+        <div class="brand"><div style="font-size:22px;line-height:1">alura</div><div class="latam">LATAM</div></div>
         <nav>
           <a href="https://www.aluracursos.com/instructores" target="_blank" rel="noreferrer">INSTRUCTORES</a>
           <a href="https://www.aluracursos.com/blog" target="_blank" rel="noreferrer">BLOG</a>
@@ -320,41 +259,19 @@
   </div>
 
   <script>
-    // Credenciales demo
     const USERNAME = "roberto.migliolo@gmail.com";
     const PASSWORD_SHA256_HEX = "a0a949145c445c3aeac44c9e9e723caff2c43e9071816e815f92488ca1fd7821";
-
-    async function sha256Hex(text) {
-      const data = new TextEncoder().encode(text);
-      const hash = await crypto.subtle.digest("SHA-256", data);
-      return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,"0")).join("");
-    }
-
-    const form = document.getElementById("form");
-    const email = document.getElementById("email");
-    const pass = document.getElementById("pass");
-    const error = document.getElementById("error");
-    const okMsg = document.getElementById("okMsg");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      error.style.display = "none";
-      try {
-        const okUser = email.value.trim().toLowerCase() === USERNAME.toLowerCase();
-        const hash = await sha256Hex(pass.value);
-        const okPass = hash === PASSWORD_SHA256_HEX.toLowerCase();
-        if (okUser && okPass) {
-          document.querySelector(".grid").style.display = "none";
-          okMsg.classList.add("show");
-        } else {
-          error.textContent = "Credenciales inválidas";
-          error.style.display = "block";
-        }
-      } catch (err) {
-        console.error(err);
-        error.textContent = "Error en autenticación";
-        error.style.display = "block";
-      }
+    async function sha256Hex(text){const data=new TextEncoder().encode(text);const hash=await crypto.subtle.digest("SHA-256",data);return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join("")}
+    const form=document.getElementById("form"),email=document.getElementById("email"),pass=document.getElementById("pass"),error=document.getElementById("error"),okMsg=document.getElementById("okMsg");
+    form.addEventListener("submit",async e=>{
+      e.preventDefault();error.style.display="none";
+      try{
+        const okUser=email.value.trim().toLowerCase()===USERNAME.toLowerCase();
+        const hash=await sha256Hex(pass.value);
+        const okPass=hash===PASSWORD_SHA256_HEX.toLowerCase();
+        if(okUser&&okPass){document.querySelector(".grid").style.display="none";okMsg.classList.add("show");}
+        else{error.textContent="Credenciales inválidas";error.style.display="block";}
+      }catch(err){console.error(err);error.textContent="Error en autenticación";error.style.display="block";}
     });
   </script>
 </body>

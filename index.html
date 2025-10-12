@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Login (Alura estilo) — Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root { color-scheme: light; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:inherit;text-decoration:none}
+    .wrap{min-height:100vh;background:#f5f5f5;display:flex;flex-direction:column}
+    .topbar{background:#fff;border-bottom:1px solid #e5e7eb;padding:10px 24px;text-align:right;color:#6b7280}
+    .topbar .btn-green{margin-left:8px;background:#3ad27a;color:#fff;padding:6px 10px;border-radius:6px;font-weight:700}
+    .grid{display:flex;gap:40px;justify-content:center;align-items:flex-start;padding:40px 24px;max-width:1100px;margin:0 auto}
+    .loginBox{width:420px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:24px}
+    .loginBox h1{margin:0 0 6px 0;color:#6b7280;font-size:26px}
+    .muted{color:#9ca3af;margin:0 0 18px 0;font-size:14px}
+    .form{display:flex;flex-direction:column;gap:10px}
+    .form label{color:#9ca3af;font-size:14px}
+    .form input{height:40px;border:1px solid #d1d5db;border-radius:4px;padding:0 10px}
+    .btn-gray{height:44px;background:#7a848e;color:#fff;border:none;border-radius:4px;font-weight:700;cursor:pointer}
+    .btn-gray:hover{background:#6a737c}
+    .error{color:#dc2626;text-align:center;margin-top:8px}
+    .center{text-align:center}
+    .promo{width:520px}
+    .promo h2{color:#6b7280;font-size:26px;margin:0 0 12px 0}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .card{display:block;color:#fff;border-radius:6px;padding:12px}
+    .card b{display:block}
+    .card span{font-size:12px;opacity:.95}
+    .c1{background:#2dc3aa}.c2{background:#5bd0f5}.c3{background:#6fdba8}
+    .c4{background:#6aa5ff}.c5{background:#f28e52}.c6{background:#ff6b6b}
+    .banner{display:block;background:#e9eff3;border-radius:6px;padding:14px;margin-top:12px;color:#374151}
+    .banner .small{display:inline-block;margin-top:10px}
+    .btn-green{background:#3ad27a;color:#fff;padding:6px 10px;border-radius:6px;font-weight:700}
+    .footer{margin-top:auto;border-top:1px solid #e5e7eb;padding:24px;color:#6b7280;text-align:center}
+    .footer .brand{font-weight:800}
+    .footer .brand span{font-weight:700;font-size:12px;margin-left:6px}
+    .footer nav{display:flex;gap:16px;justify-content:center;margin:10px 0}
+    .social{display:flex;gap:16px;justify-content:center}
+    .ok{display:none;align-items:center;justify-content:center;min-height:50vh;font-size:22px}
+    .ok.show{display:flex}
+    @media (max-width:1024px){
+      .grid{flex-direction:column;align-items:center}
+      .promo,.loginBox{width:100%;max-width:680px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      ¿TODAVÍA NO TIENES ACCESO?
+      <a class="btn-green" href="https://www.aluracursos.com/planes" target="_blank" rel="noreferrer">NUESTROS PLANES</a>
+    </div>
+
+    <div class="grid" id="grid">
+      <!-- Caja de Login -->
+      <div class="loginBox" id="loginBox">
+        <h1>¿Ya es nuestro alumno?</h1>
+        <p class="muted">¡Realice login y tenga una excelente aula!</p>
+
+        <form id="form" class="form">
+          <label>Email</label>
+          <input id="email" type="email" required />
+
+          <label>Contraseña</label>
+          <input id="pass" type="password" required />
+
+          <button class="btn-gray" type="submit">ENTRAR</button>
+
+          <p class="error" id="error" style="display:none;"></p>
+
+          <p class="center">
+            <a href="https://app.aluracursos.com/forgetPassword" target="_blank" rel="noreferrer">Olvidé mi contraseña</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Lado derecho con tarjetas -->
+      <div class="promo">
+        <h2>¿Todavía no eres alumno de Alura?</h2>
+        <div class="cards">
+          <a class="card c1" href="https://www.aluracursos.com/formacion-programacion" target="_blank" rel="noreferrer">
+            <b>Programación</b>
+            <span>Lógica de Programación, Java, NodeJS.</span>
+          </a>
+          <a class="card c2" href="https://www.aluracursos.com/formacion-front-end" target="_blank" rel="noreferrer">
+            <b>Front End</b>
+            <span>HTML y CSS, Angular, React.</span>
+          </a>
+          <a class="card c3" href="https://www.aluracursos.com/formacion-data-science" target="_blank" rel="noreferrer">
+            <b>Data Science</b>
+            <span>Excel, Business Intelligence.</span>
+          </a>
+          <a class="card c4" href="https://www.aluracursos.com/formacion-inteligencia-artificial" target="_blank" rel="noreferrer">
+            <b>Inteligencia Artificial</b>
+            <span>IA para Front End, IA para Datos.</span>
+          </a>
+          <a class="card c5" href="https://www.aluracursos.com/formacion-innovacion-gestiona" target="_blank" rel="noreferrer">
+            <b>Innovación y Gestión</b>
+            <span>Transformación Ágil, Comunicación.</span>
+          </a>
+          <a class="card c6" href="https://www.aluracursos.com/formacion-devops" target="_blank" rel="noreferrer">
+            <b>DevOps</b>
+            <span>Cloud, Linux, Redes.</span>
+          </a>
+        </div>
+
+        <a class="banner" href="https://www.aluracursos.com/planes" target="_blank" rel="noreferrer">
+          <b>¿Sabes cuándo puedes empezar? Ahora</b>
+          <span>Accese a todo el contenido</span>
+          <div class="btn-green small">NUESTROS PLANES</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mensaje “logueado” (placeholder Fase 2) -->
+    <div class="ok" id="okMsg">✅ Login correcto — Estructura lista para Fase 2</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="brand">alura <span>LATAM</span></div>
+      <nav>
+        <a href="https://www.aluracursos.com/instructores" target="_blank" rel="noreferrer">INSTRUCTORES</a>
+        <a href="https://www.aluracursos.com/blog" target="_blank" rel="noreferrer">BLOG</a>
+        <a href="https://www.aluracursos.com/sobre" target="_blank" rel="noreferrer">SOBRE NOSOTROS</a>
+        <a href="https://www.aluracursos.com/faq" target="_blank" rel="noreferrer">PREGUNTAS FRECUENTES</a>
+      </nav>
+      <div class="social">
+        <a href="https://www.youtube.com/@aluracursos" target="_blank" rel="noreferrer">YouTube</a>
+        <a href="https://www.facebook.com/aluracursos" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://www.instagram.com/aluracursos" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/school/alura-latam/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ======= Config =======
+    const USERNAME = "roberto.migliolo@gmail.com";
+    const PASSWORD_SHA256_HEX = "a0a949145c445c3aeac44c9e9e723caff2c43e9071816e815f92488ca1fd7821";
+
+    async function sha256Hex(text) {
+      const data = new TextEncoder().encode(text);
+      const hash = await crypto.subtle.digest("SHA-256", data);
+      return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,"0")).join("");
+    }
+
+    const $ = (id) => document.getElementById(id);
+    const form = $("form");
+    const email = $("email");
+    const pass = $("pass");
+    const error = $("error");
+    const loginBox = $("loginBox");
+    const okMsg = $("okMsg");
+    const grid = $("grid");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      error.style.display = "none";
+      try {
+        const okUser = email.value.trim().toLowerCase() === USERNAME.toLowerCase();
+        const hash = await sha256Hex(pass.value);
+        const okPass = hash === PASSWORD_SHA256_HEX.toLowerCase();
+        if (okUser && okPass) {
+          // Simula sesión básica
+          loginBox.style.display = "none";
+          grid.style.justifyContent = "center";
+          okMsg.classList.add("show");
+        } else {
+          error.textContent = "Credenciales inválidas";
+          error.style.display = "block";
+        }
+      } catch (err) {
+        error.textContent = "Error en autenticación";
+        error.style.display = "block";
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

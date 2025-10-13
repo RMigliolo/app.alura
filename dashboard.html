@@ -26,7 +26,7 @@
       font-weight:800;
       color:#6a7682;
       text-decoration:none;
-      font-size:16px;                /* ↑ tamaño según referencia */
+      font-size:16px;
       letter-spacing:.5px;
       display:flex;align-items:center;gap:6px;
       text-transform:uppercase;
@@ -40,14 +40,34 @@
     .user{display:flex;align-items:center;gap:8px;position:relative;cursor:pointer}
     .avatar{width:26px;height:26px;border-radius:50%;background:#9aa7b4}
     .username{font-weight:800;font-size:16px;color:#697581;letter-spacing:.5px;text-transform:uppercase}
-    .dropdown{position:absolute;right:0;top:110%;background:#fff;border:1px solid #e6eaee;border-radius:8px;min-width:200px;box-shadow:0 8px 24px rgba(0,0,0,.08);display:none;z-index:20}
-    .dropdown a{display:block;padding:10px 12px;color:#5a6672;text-decoration:none;font-size:13px}
-    .dropdown a:hover{background:#f4f7fa}
+    /* New dropdown styles */
+    .dropdown{
+      position:absolute;right:0;top:110%;
+      background:#fff;border:1px solid #e6eaee;border-radius:10px;
+      width:370px;box-shadow:0 14px 30px rgba(21,29,40,.12);
+      display:none;overflow:hidden;animation:slideIn .16s ease-out;
+    }
     .user.open .dropdown{display:block}
+    @keyframes slideIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+    .dropdown:before{
+      content:"";position:absolute;right:18px;top:-10px;
+      border:10px solid transparent;border-bottom-color:#fff;filter:drop-shadow(0 -1px 0 #e6eaee);
+    }
+    .dd-head{padding:16px;border-bottom:1px solid #eef2f5;display:flex;align-items:center;gap:10px}
+    .dd-one{display:flex;align-items:center;gap:10px}
+    .dd-one svg{width:34px;height:24px}
+    .dd-one .one-text{line-height:1}
+    .dd-one .one{font-weight:900;color:#4a5662;font-size:16px}
+    .dd-one .sub{font-size:10px;color:#7f8a95}
 
-    /* ========= Subbar (gris) ========= */
+    .dd-item{display:flex;align-items:center;gap:14px;padding:16px;border-top:1px solid #eef2f5;text-decoration:none}
+    .dd-item:hover{background:#f6f9fc}
+    .dd-icon{width:22px;height:22px;color:#8fa0b0}
+    .dd-text{font-weight:800;color:#53616e;font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+
+    /* ========= Subbar ========= */
     .subbar{background:var(--sub);border-top:1px solid #99a8b7;border-bottom:1px solid #99a8b7}
-    .subbar .container{height:70px;display:flex;align-items:center} /* 70px solicitados */
+    .subbar .container{height:70px;display:flex;align-items:center}
     .subbar .title{font-weight:900;color:#ffffff;letter-spacing:.6px;text-transform:uppercase;font-size:13px}
 
     /* ========= Layout ========= */
@@ -59,62 +79,31 @@
     .card .body{padding:14px 16px}
 
     /* ========= Mis cursos en marcha ========= */
-    .coursesWrap{
-      display:grid;
-      grid-template-columns:520px 240px; /* curso grande + IA */
-      gap:12px;
-      align-items:start;
-    }
-    .courseBox{
-      background:#fff;border:1px solid #dde5ec;border-radius:8px;
-      box-shadow:0 1px 3px rgba(0,0,0,.04);
-      padding:12px; display:flex; flex-direction:column; gap:12px;
-      max-width:520px; min-height:250px;
-    }
+    .coursesWrap{display:grid;grid-template-columns:520px 240px;gap:12px;align-items:start}
+    .courseBox{background:#fff;border:1px solid #dde5ec;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);padding:12px;display:flex;flex-direction:column;gap:12px;max-width:520px;min-height:250px}
     .progress{position:relative;height:4px;background:#f2f6f9;border-radius:16px;overflow:hidden;border:1px solid #e3ebf2}
     .progress .bar{position:absolute;top:0;left:0;height:100%;width:0%;background:var(--brand)}
     .progress .pct{position:absolute;right:8px;top:-16px;font-size:10px;color:#9aa7b4;font-weight:800}
-
     .courseRow{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}
     .courseIcon{width:56px;height:56px;border-radius:12px;background:#e9f7ef;display:grid;place-items:center}
     .courseMeta{color:#9aa7b4;font-weight:900;font-size:11px;margin-bottom:1px}
     .courseTitle{margin:0;color:#2d3b4a;font-weight:900;font-size:15px;line-height:1.2}
-
-    /* Botones: pegados al pie del rectángulo y cada uno a la mitad */
-    .ctaRow{
-      margin-top:auto;              /* ↓ empuja al fondo del card */
-      padding-top:6px;
-      display:grid;
-      grid-template-columns:1fr 1fr; /* cada uno 1/2 del ancho */
-      gap:8px;
-      align-items:end;
-    }
-    .ctaBtn{
-      width:100%;                   /* exactamente mitad del card */
-      height:53px;                  /* altura 1/3 mayor (del ajuste previo) */
-      display:grid;place-items:center;
-      border-radius:6px;font-weight:900;font-size:12px;text-decoration:none;color:#fff;border:1px solid transparent;
-      text-align:center;
-    }
+    .ctaRow{margin-top:auto;padding-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:end}
+    .ctaBtn{width:100%;height:53px;display:grid;place-items:center;border-radius:6px;font-weight:900;font-size:12px;text-decoration:none;color:#fff;border:1px solid transparent;text-align:center}
     .ctaBlue{background:#2397d0;border-color:#1f86b9}
     .ctaGreen{background:#3ad27a;border-color:#2fbb68}
     .ctaBlue:hover,.ctaGreen:hover{filter:brightness(1.03)}
-
-    .mini{
-      background:#fff;border:1px solid #cfdbe7;border-radius:8px;padding:12px;
-      min-height:120px; /* un poco más alta para proporción */
-    }
+    .mini{background:#fff;border:1px solid #cfdbe7;border-radius:8px;padding:12px;min-height:120px}
     .miniTop{display:flex;align-items:center;gap:8px}
     .miniIcon{width:32px;height:32px;border-radius:8px;background:#efe9ff;display:grid;place-items:center;font-size:16px}
     .miniTitle{font-size:11px;font-weight:800;color:#3b4753}
     .mini .progress{height:4px;margin-bottom:6px}
     .mini .pct{top:-14px;font-size:9px}
     .miniBadge{display:inline-block;margin-top:8px;border:1px solid var(--brand);color:var(--brand);border-radius:14px;padding:5px 9px;font-weight:800;font-size:10px;text-decoration:none}
-
     .seeAll{margin-top:6px}
     .seeAll a{color:var(--brand);font-weight:800;text-decoration:underline;font-size:10px}
 
-    /* ========= Guías / Descubre / Footer (sin cambios) ========= */
+    /* ========= Guías / Descubre / Footer (resto sin cambios) ========= */
     .headline{font-size:22px;font-weight:900;color:#5e6a75;margin:0 0 10px}
     .guidesRow{display:flex;gap:18px;align-items:flex-start}
     .guideCard{background:#fff;border:1px solid #d3dde7;border-radius:12px;width:22%;min-height:360px;padding:14px;position:relative;text-decoration:none}
@@ -170,19 +159,68 @@
 
         <div class="bell" title="Notificaciones">
           <svg viewBox="0 0 24 24">
-            <path d="M12 3a5 5 0 00-5 5v2.3c0 .7-.3 1.4-.8 1.9L4.3 14c-.5.5-.2 1.4.5 1.4h14.4c.7 0 1-.9.5-1.4l-1.9-1.8c-.5-.5-.8-1.2-.8-1.9V8a5 5 0 00-5-5Z" stroke-width="1.6" />
-            <path d="M9.5 18a2.5 2.5 0 005 0" stroke-width="1.6"/>
+            <path d="M12 3a5 5 0 00-5 5v2.3c0 .7-.3 1.4-.8 1.9L4.3 14c-.5.5-.2 1.4.5 1.4h14.4c.7 0 1-.9.5-1.4l-1.9-1.8c-.5-.5-.8-1.2-.8-1.9V8a5 5 0 00-5-5Z" stroke="#8b98a5" stroke-width="1.6" fill="none" />
+            <path d="M9.5 18a2.5 2.5 0 005 0" stroke="#8b98a5" stroke-width="1.6" fill="none"/>
           </svg>
         </div>
 
+        <!-- Perfil -->
         <div class="user" id="userMenu">
           <div class="avatar"></div>
           <div class="username">Robert <span class="caret">▾</span></div>
-          <div class="dropdown">
-            <a href="https://app.aluracursos.com/profile" target="_blank">Mi perfil</a>
-            <a href="https://app.aluracursos.com/settings" target="_blank">Configuración</a>
-            <a href="https://app.aluracursos.com/help" target="_blank">Ayuda</a>
-            <a href="index.html">Salir</a>
+
+          <!-- NEW DROPDOWN -->
+          <div class="dropdown" role="menu" aria-label="Menú de perfil">
+            <div class="dd-head">
+              <div class="dd-one">
+                <!-- Pequeño logo de ONE -->
+                <svg viewBox="0 0 60 40" aria-hidden="true">
+                  <rect x="8" y="22" width="12" height="6" rx="2" fill="#57b587"/>
+                  <rect x="20" y="18" width="12" height="6" rx="2" fill="#f0a54a"/>
+                  <rect x="32" y="14" width="12" height="6" rx="2" fill="#6ac0a0"/>
+                </svg>
+                <div class="one-text">
+                  <div class="one">ONE</div>
+                  <div class="sub">Oracle Next Education</div>
+                </div>
+              </div>
+            </div>
+
+            <a class="dd-item" href="profile.html">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="8" r="3.2"></circle>
+                <path d="M4 19c0-3.1 3.6-5 8-5s8 1.9 8 5"></path>
+              </svg>
+              <div class="dd-text">PERFIL & CERTIFICADOS</div>
+            </a>
+
+            <a class="dd-item" href="https://www.aluracursos.com/blog" target="_blank" rel="noopener">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M7 20V7a2 2 0 012-2h7"></path>
+                <path d="M7 7h9v13H7z"></path>
+                <path d="M9.5 11h6"></path>
+              </svg>
+              <div class="dd-text">EDITAR PERFIL</div>
+            </a>
+
+            <a class="dd-item" href="https://alun.com.br/" target="_blank" rel="noopener">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 17v-2h16v2"></path>
+                <path d="M6 13V7h12v6"></path>
+                <circle cx="8" cy="18" r="1.2"></circle>
+                <circle cx="16" cy="18" r="1.2"></circle>
+              </svg>
+              <div class="dd-text">MI REGISTRO</div>
+            </a>
+
+            <a class="dd-item" href="index.html">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M10 17l-5-5 5-5"></path>
+                <path d="M5 12h12"></path>
+                <path d="M19 5v14"></path>
+              </svg>
+              <div class="dd-text">SALIR</div>
+            </a>
           </div>
         </div>
       </nav>
@@ -212,12 +250,7 @@
                     <div class="courseIcon" aria-hidden="true">
                       <!-- Ubuntu en verdes -->
                       <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
-                        <defs>
-                          <linearGradient id="ug" x1="0" x2="1">
-                            <stop offset="0%" stop-color="#34c66a"/>
-                            <stop offset="100%" stop-color="#17a24f"/>
-                          </linearGradient>
-                        </defs>
+                        <defs><linearGradient id="ug" x1="0" x2="1"><stop offset="0%" stop-color="#34c66a"/><stop offset="100%" stop-color="#17a24f"/></linearGradient></defs>
                         <circle cx="32" cy="32" r="14" fill="url(#ug)"></circle>
                         <circle cx="32" cy="8" r="5" fill="#34c66a"></circle>
                         <circle cx="9" cy="38" r="5" fill="#34c66a"></circle>
@@ -231,7 +264,6 @@
                     </div>
                   </div>
 
-                  <!-- Botones al pie del rectángulo -->
                   <div class="ctaRow">
                     <a class="ctaBtn ctaBlue" href="https://app.aluracursos.com/course/linux-1-conociendo-utilizando-terminal" target="_blank">VER CONTENIDO DEL CURSO</a>
                     <a class="ctaBtn ctaGreen" href="https://app.aluracursos.com/course/linux-1-conociendo-utilizando-terminal/continue" target="_blank">CONTINUAR DONDE PARÓ</a>
@@ -265,7 +297,7 @@
           <div class="guidesRow">
             <a class="guideCard" href="https://mylearn.oracle.com/ou/home" target="_blank" rel="noopener">
               <div class="guideBadge" title="Formación">
-                <svg viewBox="0 0 24 24"><path d="M4 10l8-4 8 4-8 4-8-4zm3 2v5l5 2 5-2v-5" /></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 10l8-4 8 4-8 4-8-4zm3 2v5l5 2 5-2v-5" fill="#fff"/></svg>
               </div>
               <div class="guideKind">FORMACIÓN</div>
               <div class="guideTitle">Ruta hacia la certificación OCI Foundations Associate - ONE</div>
@@ -397,9 +429,10 @@
   </footer>
 
   <script>
+    // Toggle del menú del usuario + clic fuera para cerrar
     const user = document.getElementById('userMenu');
-    user.addEventListener('click', ()=> user.classList.toggle('open'));
-    document.addEventListener('click', (e)=>{ if(!user.contains(e.target)) user.classList.remove('open'); });
+    user.addEventListener('click', (e)=>{ e.stopPropagation(); user.classList.toggle('open'); });
+    document.addEventListener('click', ()=> user.classList.remove('open'));
   </script>
 </body>
 </html>

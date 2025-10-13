@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Perfil & Certificados — Alura LATAM (demo)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#f5f7f8; --card:#fff; --text:#4b5563; --muted:#94a3b8; --line:#e5e7eb;
+      --brand:#2A7AE4; --accent:#2397d0; --success:#34c66a; --sub:#A1B0C0;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);font-family:Lato,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);font-size:14px}
+
+    /* ========= HEADER (idéntico a dashboard) ========= */
+    .topbar{background:#fff;border-bottom:1px solid #dfe6ec}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .top-row{display:flex;align-items:center;gap:14px;height:80px}
+    .logo{display:flex;align-items:flex-end;gap:6px;color:#7a7a7a;text-decoration:none}
+    .logo .a{font-size:26px;font-weight:900;line-height:1}
+    .logo .lat{font-size:11px;letter-spacing:.8px;margin-bottom:2px}
+
+    .nav{margin-left:auto;display:flex;align-items:center;gap:34px}
+    .nav a{
+      font-weight:800;color:#6a7682;text-decoration:none;font-size:16px;letter-spacing:.5px;
+      display:flex;align-items:center;gap:6px;text-transform:uppercase;
+    }
+    .caret{font-size:12px;color:#9aa7b4;transform:translateY(1px)}
+    .search input{height:32px;border:1px solid #dbe3ea;border-radius:18px;padding:0 30px 0 12px;font-size:13px;background:#fff}
+
+    .bell{width:26px;height:26px;border-radius:50%;display:grid;place-items:center}
+    .bell svg{width:18px;height:18px;stroke:#8b98a5;fill:#fff}
+
+    .user{display:flex;align-items:center;gap:8px;position:relative;cursor:pointer}
+    .avatar{width:26px;height:26px;border-radius:50%;background:#9aa7b4}
+    .username{font-weight:800;font-size:16px;color:#697581;letter-spacing:.5px;text-transform:uppercase}
+
+    .dropdown{
+      position:absolute;right:0;top:110%;background:#fff;border:1px solid #e6eaee;border-radius:10px;
+      width:370px;box-shadow:0 14px 30px rgba(21,29,40,.12);display:none;overflow:hidden;animation:slideIn .16s ease-out;
+    }
+    .user.open .dropdown{display:block}
+    @keyframes slideIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+    .dropdown:before{
+      content:"";position:absolute;right:18px;top:-10px;border:10px solid transparent;
+      border-bottom-color:#fff;filter:drop-shadow(0 -1px 0 #e6eaee);
+    }
+    .dd-head{padding:16px;border-bottom:1px solid #eef2f5;display:flex;align-items:center;gap:10px}
+    .dd-one{display:flex;align-items:center;gap:10px}
+    .dd-one svg{width:34px;height:24px}
+    .dd-one .one-text{line-height:1}
+    .dd-one .one{font-weight:900;color:#4a5662;font-size:16px}
+    .dd-one .sub{font-size:10px;color:#7f8a95}
+
+    .dd-item{display:flex;align-items:center;gap:14px;padding:16px;border-top:1px solid #eef2f5;text-decoration:none}
+    .dd-item:hover{background:#f6f9fc}
+    .dd-icon{width:22px;height:22px;color:#8fa0b0}
+    .dd-text{font-weight:800;color:#53616e;font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+
+    /* ========= SUBBAR ========= */
+    .subbar{background:var(--sub);border-top:1px solid #99a8b7;border-bottom:1px solid #99a8b7}
+    .subbar .container{height:70px;display:flex;align-items:center}
+    .subbar .title{font-weight:900;color:#ffffff;letter-spacing:.6px;text-transform:uppercase;font-size:13px}
+
+    /* ========= LAYOUT ========= */
+    .main{padding:20px 0}
+    .headline{font-size:22px;font-weight:900;color:#5e6a75;margin:0 0 10px}
+
+    /* ========= Tarjetas de cursos finalizados ========= */
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .cardC{
+      background:var(--card);border:1px solid #cbd9e6;border-radius:10px;display:flex;flex-direction:column;
+      padding:16px 16px 0 16px;min-height:180px
+    }
+    .cTop{display:flex;gap:12px}
+    .cIco{width:52px;height:52px;border-radius:10px;background:#E8F2FF;border:1px solid #DCE8FA;display:grid;place-items:center;font-size:20px}
+    .cTitle{color:#2f3339;font-weight:900;font-size:16px;line-height:1.25;margin-top:2px}
+    .cTitle small{display:block;font-weight:400;color:#5f6b77;font-size:12px;margin-top:2px}
+    .cAct{display:flex;align-items:center;gap:18px;margin-top:14px;color:#6A7580;font-weight:900}
+    .cAct .ico{width:24px;height:20px;border:2px solid #9AA7B4;border-radius:6px;display:inline-block;margin-right:8px;vertical-align:-4px}
+    .cAct span{font-size:14px;letter-spacing:.01em}
+    /* ↓↓↓ Ajuste solicitado: reducir tamaño y quitar negrita SOLO en las etiquetas de texto */
+    .cAct > span > span{font-size:12px;font-weight:400;letter-spacing:0}
+    .divLine{border:none;border-top:1px solid #CBD9E6;margin:14px -16px 0}
+    .chipRow{padding:10px 16px}
+    .chip{display:inline-block;background:#fff;border:2px solid #CBD9E6;border-radius:28px;padding:8px 14px;color:#2A7AE4;font-weight:900;letter-spacing:.01em;font-size:11px}
+
+    /* ========= Certificados de programa ========= */
+    .progGrid{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start;margin-top:24px}
+    .progCard{width:320px;background:#fff;border:1px solid #e1e7ee;border-radius:10px}
+    .progIn{padding:14px}
+    .progBox{background:#FDFEFE;border:1px solid #E7EEF6;border-radius:10px;height:280px;padding:16px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative}
+    .progMedal{position:absolute;top:14px;right:14px;width:18px;height:18px;border-radius:4px;background:#37C871}
+    .progLogo{width:76px;height:76px;border-radius:50%;border:2px solid #E7EEF6;display:grid;place-items:center;font-weight:900;color:#4b8}
+    .progName{font-weight:900;color:#2f3339;text-align:center;line-height:1.35}
+    .progSub{color:#4D5A66;text-align:center;font-size:12px}
+    .progMeta{display:flex;justify-content:space-between;margin-top:10px;color:#8392A1;font-size:12px}
+    .note{margin-top:16px;color:#6B7785}
+    .note a{color:#6E778B;text-decoration:underline;font-weight:900}
+
+    /* ========= FOOTER (idéntico a dashboard) ========= */
+    .footer{margin-top:26px;border-top:1px solid #e5e7eb;background:#f7f9fa}
+    .footer-wrap{max-width:1180px;margin:0 auto;padding:24px 24px;display:grid;grid-template-columns:220px 1fr 1fr 320px;gap:24px;align-items:start;color:#6b7680}
+    .footer-logo{display:flex;align-items:flex-start;gap:8px;color:#a0a7ae;text-decoration:none}
+    .footer-logo .alura{font-size:34px;line-height:1;font-weight:900}
+    .footer-logo .latam{font-size:12px;letter-spacing:.8px}
+    .footer-links{display:flex;flex-direction:column;gap:8px;font-size:13px}
+    .footer-links a{color:#6f7a84;text-decoration:none}
+    .footer-links a:hover{color:#4f5a63}
+    .footer-social{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center}
+    .footer-social h4{margin:0 0 10px 0;font-weight:700;font-size:11px;color:#88929b;text-transform:uppercase}
+    .social-row{display:flex;gap:12px}
+    .social-ico{width:38px;height:38px;border-radius:50%;background:#8f9aa3;display:grid;place-items:center}
+    .social-ico svg{width:20px;height:20px;stroke:none;fill:#ffffff}
+    .social-ico:hover{opacity:.9}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="container top-row">
+      <a class="logo" href="dashboard.html"><span class="a">alura</span><span class="lat">LATAM</span></a>
+
+      <nav class="nav">
+        <a href="https://app.aluracursos.com/learningPaths" target="_blank">MI APRENDIZAJE <span class="caret">▾</span></a>
+        <a href="https://www.aluracursos.com/sobre" target="_blank">CONTENIDOS <span class="caret">▾</span></a>
+        <a href="https://www.aluracursos.com/comunidad" target="_blank">COMUNIDAD <span class="caret">▾</span></a>
+        <div class="search"><input placeholder="Buscar cursos..."></div>
+
+        <div class="bell" title="Notificaciones">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3a5 5 0 00-5 5v2.3c0 .7-.3 1.4-.8 1.9L4.3 14c-.5.5-.2 1.4.5 1.4h14.4c.7 0 1-.9.5-1.4l-1.9-1.8c-.5-.5-.8-1.2-.8-1.9V8a5 5 0 00-5-5Z" stroke="#8b98a5" stroke-width="1.6" fill="none" />
+            <path d="M9.5 18a2.5 2.5 0 005 0" stroke="#8b98a5" stroke-width="1.6" fill="none"/>
+          </svg>
+        </div>
+
+        <!-- Perfil con dropdown -->
+        <div class="user" id="userMenu">
+          <div class="avatar"></div>
+          <div class="username">Robert <span class="caret">▾</span></div>
+
+          <div class="dropdown" role="menu" aria-label="Menú de perfil">
+            <div class="dd-head">
+              <div class="dd-one">
+                <svg viewBox="0 0 60 40" aria-hidden="true">
+                  <rect x="8" y="22" width="12" height="6" rx="2" fill="#57b587"/>
+                  <rect x="20" y="18" width="12" height="6" rx="2" fill="#f0a54a"/>
+                  <rect x="32" y="14" width="12" height="6" rx="2" fill="#6ac0a0"/>
+                </svg>
+                <div class="one-text">
+                  <div class="one">ONE</div>
+                  <div class="sub">Oracle Next Education</div>
+                </div>
+              </div>
+            </div>
+
+            <a class="dd-item" href="profile.html">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="8" r="3.2"></circle>
+                <path d="M4 19c0-3.1 3.6-5 8-5s8 1.9 8 5"></path>
+              </svg>
+              <div class="dd-text">PERFIL & CERTIFICADOS</div>
+            </a>
+
+            <a class="dd-item" href="https://www.aluracursos.com/blog" target="_blank" rel="noopener">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M7 20V7a2 2 0 0 1 2-2h7"></path><path d="M7 7h9v13H7z"></path><path d="M9.5 11h6"></path>
+              </svg>
+              <div class="dd-text">EDITAR PERFIL</div>
+            </a>
+
+            <a class="dd-item" href="https://alun.com.br/" target="_blank" rel="noopener">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 17v-2h16v2"></path><path d="M6 13V7h12v6"></path><circle cx="8" cy="18" r="1.2"></circle><circle cx="16" cy="18" r="1.2"></circle>
+              </svg>
+              <div class="dd-text">MI REGISTRO</div>
+            </a>
+
+            <a class="dd-item" href="index.html">
+              <svg class="dd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M10 17l-5-5 5-5"></path><path d="M5 12h12"></path><path d="M19 5v14"></path>
+              </svg>
+              <div class="dd-text">SALIR</div>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- SUBBAR -->
+  <div class="subbar"><div class="container"><div class="title">PERFIL DE ROBERT LEE WEAVER MIGLIOLO</div></div></div>
+
+  <!-- MAIN -->
+  <div class="container main">
+    <h2 class="headline">Cursos finalizados</h2>
+
+    <section class="grid">
+      <!-- Tarjeta 1 -->
+      <article class="cardC">
+        <div class="cTop">
+          <div class="cIco">🧠</div>
+          <div class="cTitle">Aprender a aprender:<small>tecnicas para tu autodesarrollo</small></div>
+        </div>
+        <div class="cAct">
+          <span><i class="ico"></i><span>CERTIFICADO</span></span>
+          <span><i class="ico" style="background:#6E7B88"></i><span>ADICIONAR AL PERFIL</span></span>
+        </div>
+        <hr class="divLine">
+        <div class="chipRow"><span class="chip">Alura LATAM</span></div>
+      </article>
+
+      <!-- Tarjeta 2 -->
+      <article class="cardC">
+        <div class="cTop">
+          <div class="cIco">📊</div>
+          <div class="cTitle">Challenge Telecom X:<small>análisis de evasión de clientes</small></div>
+        </div>
+        <div class="cAct">
+          <span><i class="ico"></i><span>CERTIFICADO</span></span>
+          <span><i class="ico" style="background:#6E7B88"></i><span>ADICIONAR AL PERFIL</span></span>
+        </div>
+        <hr class="divLine">
+        <div class="chipRow"><span class="chip">Alura LATAM</span></div>
+      </article>
+
+      <!-- Tarjeta 3 -->
+      <article class="cardC">
+        <div class="cTop">
+          <div class="cIco">🧩</div>
+          <div class="cTitle">Challenge Telecom X:<small>análisis de evasión de clientes - Parte 2</small></div>
+        </div>
+        <div class="cAct">
+          <span><i class="ico"></i><span>CERTIFICADO</span></span>
+          <span><i class="ico" style="background:#6E7B88"></i><span>ADICIONAR AL PERFIL</span></span>
+        </div>
+        <hr class="divLine">
+        <div class="chipRow"><span class="chip">Alura LATAM</span></div>
+      </article>
+
+      <!-- Tarjeta 4 -->
+      <article class="cardC">
+        <div class="cTop">
+          <div class="cIco">🏅</div>
+          <div class="cTitle">ChatGPT:<small>optimizando la calidad de los resultados</small></div>
+        </div>
+        <div class="cAct">
+          <span><i class="ico"></i><span>CERTIFICADO</span></span>
+          <span><i class="ico" style="background:#6E7B88"></i><span>ADICIONAR AL PERFIL</span></span>
+        </div>
+        <hr class="divLine">
+        <div class="chipRow"><span class="chip">Alura LATAM</span></div>
+      </article>
+    </section>
+
+    <h2 class="headline" style="margin-top:24px">Certificados de programa</h2>
+    <section class="progGrid">
+      <div class="progCard">
+        <div class="progIn">
+          <div class="progBox">
+            <div class="progMedal" title="destacado"></div>
+            <div class="progLogo">ONE</div>
+            <div class="progName">Programa ONE Tech Foundation<br>G8 · Data Science</div>
+            <div class="progSub">Concluido en 19/08/2025</div>
+            <div class="progMeta">
+              <a href="#" onclick="return false" style="color:#6B7785;text-decoration:underline;">VER CERTIFICADO</a>&nbsp;
+              <a href="#" onclick="return false" style="color:#6B7785;text-decoration:underline;">ADICIONAR AL PERFIL</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </section>
+
+    <p class="note">Usted puede encontrar un certificado completo <a href="assets/certificado.pdf" target="_blank" rel="noopener">aquí</a></p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <a class="footer-logo" href="dashboard.html">
+        <div class="alura">alura</div><div class="latam">LATAM</div>
+      </a>
+
+      <div class="footer-links">
+        <a href="https://www.aluracursos.com/instrutores" target="_blank">INSTRUCTORES</a>
+        <a href="https://www.aluracursos.com/blog" target="_blank">BLOG</a>
+        <a href="https://www.aluracursos.com/sobre" target="_blank">SOBRE NOSOTROS</a>
+        <a href="https://soporte.aluracursos.com/es-LA/support/home" target="_blank">PREGUNTAS FRECUENTES</a>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPD_drybwWcxBrwR_zGUVHaV4WA7_sMSo7I-NjbBabX3fqCg/viewform" target="_blank">SUGERENCIA DE CURSOS</a>
+        <a href="https://www.fiap.com.br/graduacao/" target="_blank">GRADUAÇÃO</a>
+        <a href="https://postech.fiap.com.br/" target="_blank">PÓS-GRADUAÇÃO</a>
+        <a href="https://www.fiap.com.br/mba" target="_blank">MBA</a>
+      </div>
+
+      <div class="footer-social">
+        <h4>SÍGUENOS EN NUESTRAS REDES SOCIALES</h4>
+        <div class="social-row">
+          <a class="social-ico" href="https://www.youtube.com/@aluracursos" target="_blank" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="3"/><path d="M10 10.5l4 2.5-4 2.5" fill="#ffffff"/></svg>
+          </a>
+          <a class="social-ico" href="https://www.facebook.com/aluracursoslatam" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M14 5h-2.2C9.8 5 9 6 9 7.9V10H7v3h2v6h3v-6h2.5l.8-3H12V8.2c0-.7.3-1.2 1.1-1.2H17V5h-3z"/></svg>
+          </a>
+          <a class="social-ico" href="https://www.instagram.com/aluralatam" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="5" width="14" height="14" rx="4" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="3.8" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+              <circle cx="17" cy="7" r="1.2"/>
+            </svg>
+          </a>
+          <a class="social-ico" href="https://www.linkedin.com/company/alura-latam/" target="_blank" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6 9h3v10H6zM7.5 5.5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6Zm4.5 3.5h3v1.7c.7-1.1 1.8-1.9 3.4-1.9 2.4 0 3.6 1.4 3.6 4.1V19h-3v-5c0-1.6-.6-2.4-1.9-2.4-1.2 0-2.1.8-2.1 2.4V19h-3V9z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle del menú del usuario
+    const user = document.getElementById('userMenu');
+    user.addEventListener('click', (e)=>{ e.stopPropagation(); user.classList.toggle('open'); });
+    document.addEventListener('click', ()=> user.classList.remove('open'));
+  </script>
+</body>
+</html>

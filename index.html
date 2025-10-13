@@ -349,6 +349,7 @@
           email=document.getElementById("email"),
           pass=document.getElementById("pass"),
           error=document.getElementById("error");
+
     form.addEventListener("submit",async e=>{
       e.preventDefault(); if(error) error.style.display="none";
       try{
@@ -356,11 +357,8 @@
         const hash=await sha256Hex(pass.value);
         const okPass=hash===PASSWORD_SHA256_HEX.toLowerCase();
         if(okUser&&okPass){
-          document.querySelector(".grid").style.display="none";
-          const m=document.createElement("div");
-          m.className="ok show";
-          m.textContent="✅ Login correcto — Estructura lista para Fase 2";
-          document.querySelector("main").appendChild(m);
+          // ✅ Redirección directa al dashboard (sin modificar la estructura)
+          window.location.href = "dashboard.html";
         }else{
           error.textContent="Credenciales inválidas";
           error.style.display="block";

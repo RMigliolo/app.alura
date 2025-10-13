@@ -11,113 +11,139 @@
       --brand:#2A7AE4; --accent:#2397d0; --success:#34c66a; --sub:#A1B0C0;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);font-family:Lato,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text)}
+    body{margin:0;background:var(--bg);font-family:Lato,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);font-size:14px}
 
     /* ========= Header ========= */
     .topbar{background:#fff;border-bottom:1px solid #dfe6ec}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    .top-row{display:flex;align-items:center;gap:14px;height:60px}
+    .top-row{display:flex;align-items:center;gap:14px;height:80px}
     .logo{display:flex;align-items:flex-end;gap:6px;color:#7a7a7a;text-decoration:none}
     .logo .a{font-size:26px;font-weight:900;line-height:1}
     .logo .lat{font-size:11px;letter-spacing:.8px;margin-bottom:2px}
 
     .nav{margin-left:auto;display:flex;align-items:center;gap:34px}
-    .nav a{font-weight:800;color:#6a7682;text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px}
+    .nav a{font-weight:800;color:#6a7682;text-decoration:none;font-size:12px;display:flex;align-items:center;gap:6px}
     .caret{font-size:10px;color:#9aa7b4;transform:translateY(1px)}
-    .search input{height:34px;border:1px solid #dbe3ea;border-radius:18px;padding:0 30px 0 12px;font-size:14px;background:#fff}
+    .search input{height:32px;border:1px solid #dbe3ea;border-radius:18px;padding:0 30px 0 12px;font-size:13px;background:#fff}
 
-    /* campana blanca con contorno gris */
-    .bell{width:28px;height:28px;border-radius:50%;display:grid;place-items:center}
-    .bell svg{width:20px;height:20px;stroke:#8b98a5;fill:#fff}
+    .bell{width:26px;height:26px;border-radius:50%;display:grid;place-items:center}
+    .bell svg{width:18px;height:18px;stroke:#8b98a5;fill:#fff}
 
     .user{display:flex;align-items:center;gap:8px;position:relative;cursor:pointer}
-    .avatar{width:28px;height:28px;border-radius:50%;background:#9aa7b4}
-    .username{font-weight:800;font-size:13px;color:#697581}
+    .avatar{width:26px;height:26px;border-radius:50%;background:#9aa7b4}
+    .username{font-weight:800;font-size:12px;color:#697581}
     .dropdown{position:absolute;right:0;top:110%;background:#fff;border:1px solid #e6eaee;border-radius:8px;min-width:200px;box-shadow:0 8px 24px rgba(0,0,0,.08);display:none;z-index:20}
-    .dropdown a{display:block;padding:10px 12px;color:#5a6672;text-decoration:none}
+    .dropdown a{display:block;padding:10px 12px;color:#5a6672;text-decoration:none;font-size:13px}
     .dropdown a:hover{background:#f4f7fa}
     .user.open .dropdown{display:block}
 
-    /* ========= Subbar ========= */
+    /* ========= Subbar (gris) ========= */
     .subbar{background:var(--sub);border-top:1px solid #99a8b7;border-bottom:1px solid #99a8b7}
-    .subbar .container{height:46px;display:flex;align-items:center}
-    .subbar .title{font-weight:900;color:#ffffff;letter-spacing:.6px;text-transform:uppercase}
+    .subbar .container{height:80px;display:flex;align-items:center}
+    .subbar .title{font-weight:900;color:#ffffff;letter-spacing:.6px;text-transform:uppercase;font-size:13px}
 
     /* ========= Layout ========= */
-    .main{padding:22px 0}
-    .grid{display:grid;grid-template-columns:1fr 330px;gap:16px}
+    .main{padding:20px 0}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
     .section{margin-bottom:16px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
-    .card .head{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:900;color:#6a7680}
+    .card .head{padding:12px 16px;border-bottom:1px solid var(--line);font-weight:900;color:#6a7680;font-size:16px}
     .card .body{padding:14px 16px}
 
-    /* ========= Mis cursos en marcha ========= */
-    .coursesWrap{display:grid;grid-template-columns:1fr 300px;gap:16px}
-    .courseBox{background:#fff;border:1px solid #dde5ec;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);padding:14px;display:flex;flex-direction:column;gap:14px}
-    .progress{position:relative;height:8px;background:#f2f6f9;border-radius:16px;overflow:hidden;border:1px solid #e3ebf2}
+    /* ========= Mis cursos en marcha (AJUSTADO) ========= */
+    .coursesWrap{
+      display:grid;
+      grid-template-columns:520px 240px; /* curso grande más chico + IA igual */
+      gap:12px;
+      align-items:start;
+    }
+    .courseBox{
+      background:#fff;border:1px solid #dde5ec;border-radius:8px;
+      box-shadow:0 1px 3px rgba(0,0,0,.04);
+      padding:8px; display:flex; flex-direction:column; gap:10px; max-width:520px;
+    }
+    .progress{position:relative;height:4px;background:#f2f6f9;border-radius:16px;overflow:hidden;border:1px solid #e3ebf2}
     .progress .bar{position:absolute;top:0;left:0;height:100%;width:0%;background:var(--brand)}
-    .progress .pct{position:absolute;right:8px;top:-18px;font-size:12px;color:#9aa7b4;font-weight:800}
+    .progress .pct{position:absolute;right:8px;top:-16px;font-size:10px;color:#9aa7b4;font-weight:800}
 
-    .courseRow{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
-    .courseIcon{width:60px;height:60px;border-radius:12px;background:#eaf6ef;display:grid;place-items:center}
-    .courseMeta{color:#9aa7b4;font-weight:900;font-size:13px;margin-bottom:4px}
-    .courseTitle{margin:0;color:#2d3b4a;font-weight:900;font-size:24px;line-height:1.2}
+    .courseRow{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}
+    .courseIcon{width:56px;height:56px;border-radius:12px;background:#e9f7ef;display:grid;place-items:center}
+    .courseMeta{color:#9aa7b4;font-weight:900;font-size:11px;margin-bottom:1px}
+    .courseTitle{margin:0;color:#2d3b4a;font-weight:900;font-size:15px;line-height:1.2}
 
-    .ctaRow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .ctaBtn{display:grid;place-items:center;height:54px;border-radius:6px;font-weight:900;font-size:13px;text-decoration:none;color:#fff;border:1px solid transparent}
+    .ctaRow{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px; /* más juntos */
+      align-items:center;
+      justify-items:center;
+      margin-top:2px;
+    }
+    .ctaBtn{
+      width:42%;              /* más angostos */
+      height:40px;            /* más cortos */
+      display:grid;place-items:center;
+      border-radius:6px;font-weight:900;font-size:11px;text-decoration:none;color:#fff;border:1px solid transparent
+    }
     .ctaBlue{background:#2397d0;border-color:#1f86b9}
     .ctaGreen{background:#3ad27a;border-color:#2fbb68}
     .ctaBlue:hover,.ctaGreen:hover{filter:brightness(1.03)}
 
-    .mini{background:#fff;border:1px solid #cfdbe7;border-radius:8px;padding:10px}
-    .miniTop{display:flex;align-items:center;gap:10px}
-    .miniIcon{width:38px;height:38px;border-radius:8px;background:#efe9ff;display:grid;place-items:center;font-size:20px}
-    .miniTitle{font-size:13px;font-weight:800;color:#3b4753}
-    .miniBadge{display:inline-block;margin-top:10px;border:1px solid var(--brand);color:var(--brand);border-radius:16px;padding:6px 10px;font-weight:800;font-size:12px;text-decoration:none}
+    .mini{background:#fff;border:1px solid #cfdbe7;border-radius:8px;padding:8px}
+    .miniTop{display:flex;align-items:center;gap:8px}
+    .miniIcon{width:32px;height:32px;border-radius:8px;background:#efe9ff;display:grid;place-items:center;font-size:16px}
+    .miniTitle{font-size:11px;font-weight:800;color:#3b4753}
+    .mini .progress{height:4px}
+    .mini .pct{top:-14px;font-size:9px}
+    .miniBadge{display:inline-block;margin-top:8px;border:1px solid var(--brand);color:var(--brand);border-radius:14px;padding:5px 9px;font-weight:800;font-size:10px;text-decoration:none}
 
-    .seeAll{margin-top:8px}
-    .seeAll a{color:var(--brand);font-weight:800;text-decoration:underline;font-size:12px}
+    .seeAll{margin-top:6px}
+    .seeAll a{color:var(--brand);font-weight:800;text-decoration:underline;font-size:10px}
 
     /* ========= Guías de estudio ========= */
-    .headline{font-size:26px;font-weight:900;color:#5e6a75;margin:0 0 12px}
-    .guidesRow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .guideCard{background:#fff;border:1px solid #d3dde7;border-radius:12px;min-height:260px;padding:18px;position:relative;text-decoration:none}
-    .guideBadge{position:absolute;right:14px;top:-10px;background:#e45a5a;color:#fff;padding:10px;border-radius:0 0 8px 8px;display:grid;place-items:center}
-    .guideBadge svg{width:18px;height:18px;fill:#fff}
-    .guideKind{color:#e45a5a;font-weight:900;letter-spacing:.4px;font-size:14px}
-    .guideTitle{margin:6px 0 0;font-weight:900;color:#2c3946;font-size:22px;line-height:1.2}
-    .gaugeWrap{position:absolute;left:24px;right:24px;bottom:60px;height:86px;display:grid;place-items:center;opacity:.9}
-    .gaugeWrap svg{width:220px;height:86px}
-    .guideKpi{position:absolute;left:24px;bottom:18px;font-weight:900;font-size:24px;color:#2e3a46}
-    .guideKpi small{display:block;color:#7f8b97;font-size:16px;font-weight:700;margin-top:2px}
+    .headline{font-size:22px;font-weight:900;color:#5e6a75;margin:0 0 10px}
+    .guidesRow{display:flex;gap:18px;align-items:flex-start}
+    .guideCard{
+      background:#fff;border:1px solid #d3dde7;border-radius:12px;
+      width:22%; min-height:360px; padding:14px; position:relative; text-decoration:none
+    }
+    .guideBadge{position:absolute;right:10px;top:-10px;background:#e45a5a;color:#fff;padding:6px 8px;border-radius:0 0 8px 8px;display:grid;place-items:center}
+    .guideBadge svg{width:14px;height:14px;fill:#fff}
+    .guideKind{color:#e45a5a;font-weight:900;letter-spacing:.4px;font-size:11px}
+    .guideTitle{margin:4px 0 0;font-weight:900;color:#2c3946;font-size:16px;line-height:1.15}
+
+    .gaugeWrap{position:absolute;left:14px;right:14px;bottom:60px;height:90px;display:grid;place-items:center;overflow:hidden}
+    .gaugeWrap svg{width:160px;height:90px}
+    .guideKpi{position:absolute;left:14px;bottom:14px;font-weight:900;font-size:16px;color:#2e3a46}
+    .guideKpi small{display:block;color:#7f8b97;font-size:12px;font-weight:700;margin-top:2px}
 
     /* ========= Descubre nuevos cursos ========= */
-    .discover{margin-top:24px}
+    .discover{margin-top:20px}
     .tableHead{display:grid;grid-template-columns:360px 1fr;gap:16px;margin-bottom:8px}
-    .headBox{background:#c3cfda;color:#fff;padding:10px 14px;border-radius:6px;font-weight:900;letter-spacing:.4px}
+    .headBox{background:#c3cfda;color:#fff;padding:8px 12px;border-radius:6px;font-weight:900;letter-spacing:.4px;font-size:12px}
     .rows{display:grid;grid-template-columns:360px 1fr;gap:16px}
-    .catTile{background:#00c86f;border-radius:6px;color:#fff;display:flex;align-items:center;gap:18px;padding:16px}
+    .catTile{background:#00c86f;border-radius:6px;color:#fff;display:flex;align-items:center;gap:16px;padding:14px}
     .catTile.ds{background:#9cd33b}
     .catTile.dev{background:#f16165}
-    .catIcon{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center}
-    .catTitle{font-size:24px;font-weight:900;line-height:1}
-    .catLink{display:block;font-size:12px;margin-top:6px;color:#eaf6ff;text-decoration:underline}
-    .formCard{background:#fff;border:1px solid #e1e7ee;border-radius:6px;display:flex;align-items:center;padding:18px;font-weight:700;color:#485564;text-decoration:none}
+    .catIcon{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center}
+    .catTitle{font-size:22px;font-weight:900;line-height:1}
+    .catLink{display:block;font-size:11px;margin-top:6px;color:#eaf6ff;text-decoration:underline}
+    .formCard{background:#fff;border:1px solid #e1e7ee;border-radius:6px;display:flex;align-items:center;padding:16px;font-weight:700;color:#485564;text-decoration:none;font-size:14px}
 
     /* ========= Footer ========= */
-    .footer{margin-top:28px;border-top:1px solid #e5e7eb;background:#f7f9fa}
-    .footer-wrap{max-width:1180px;margin:0 auto;padding:26px 24px;display:grid;grid-template-columns:220px 1fr 1fr 320px;gap:24px;align-items:start;color:#6b7680}
+    .footer{margin-top:26px;border-top:1px solid #e5e7eb;background:#f7f9fa}
+    .footer-wrap{max-width:1180px;margin:0 auto;padding:24px 24px;display:grid;grid-template-columns:220px 1fr 1fr 320px;gap:24px;align-items:start;color:#6b7680}
     .footer-logo{display:flex;align-items:flex-start;gap:8px;color:#a0a7ae;text-decoration:none}
-    .footer-logo .alura{font-size:36px;line-height:1;font-weight:900}
+    .footer-logo .alura{font-size:34px;line-height:1;font-weight:900}
     .footer-logo .latam{font-size:12px;letter-spacing:.8px}
-    .footer-links{display:flex;flex-direction:column;gap:10px;font-size:14px}
+    .footer-links{display:flex;flex-direction:column;gap:8px;font-size:13px}
     .footer-links a{color:#6f7a84;text-decoration:none}
     .footer-links a:hover{color:#4f5a63}
     .footer-social{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center}
-    .footer-social h4{margin:0 0 12px 0;font-weight:700;font-size:12px;color:#88929b;text-transform:uppercase}
-    .social-row{display:flex;gap:14px}
-    .social-ico{width:40px;height:40px;border-radius:50%;background:#8f9aa3;display:grid;place-items:center}
-    .social-ico svg{width:22px;height:22px;stroke:none;fill:#ffffff}
+    .footer-social h4{margin:0 0 10px 0;font-weight:700;font-size:11px;color:#88929b;text-transform:uppercase}
+    .social-row{display:flex;gap:12px}
+    .social-ico{width:38px;height:38px;border-radius:50%;background:#8f9aa3;display:grid;place-items:center}
+    .social-ico svg{width:20px;height:20px;stroke:none;fill:#ffffff}
     .social-ico:hover{opacity:.9}
   </style>
 </head>
@@ -130,7 +156,7 @@
 
       <nav class="nav">
         <a href="https://app.aluracursos.com/learningPaths" target="_blank">MI APRENDIZAJE <span class="caret">▾</span></a>
-        <a href="https://app.aluracursos.com/courses" target="_blank">CONTENIDOS <span class="caret">▾</span></a>
+        <a href="https://www.aluracursos.com/sobre" target="_blank">CONTENIDOS <span class="caret">▾</span></a>
         <a href="https://www.aluracursos.com/comunidad" target="_blank">COMUNIDAD <span class="caret">▾</span></a>
         <div class="search"><input placeholder="Buscar cursos..."></div>
 
@@ -176,13 +202,19 @@
 
                   <div class="courseRow">
                     <div class="courseIcon" aria-hidden="true">
-                      <!-- LOGO estilo Ubuntu -->
-                      <svg viewBox="0 0 64 64" width="36" height="36">
-                        <circle cx="32" cy="32" r="14" fill="#e95420"></circle>
-                        <circle cx="32" cy="8" r="5" fill="#e95420"></circle>
-                        <circle cx="9" cy="38" r="5" fill="#e95420"></circle>
-                        <circle cx="55" cy="38" r="5" fill="#e95420"></circle>
-                        <circle cx="32" cy="32" r="6" fill="#fff" opacity=".15"></circle>
+                      <!-- Ubuntu en verdes -->
+                      <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="ug" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#34c66a"/>
+                            <stop offset="100%" stop-color="#17a24f"/>
+                          </linearGradient>
+                        </defs>
+                        <circle cx="32" cy="32" r="14" fill="url(#ug)"></circle>
+                        <circle cx="32" cy="8" r="5" fill="#34c66a"></circle>
+                        <circle cx="9" cy="38" r="5" fill="#34c66a"></circle>
+                        <circle cx="55" cy="38" r="5" fill="#34c66a"></circle>
+                        <circle cx="32" cy="32" r="6" fill="#ffffff" opacity=".12"></circle>
                       </svg>
                     </div>
                     <div>
@@ -197,8 +229,9 @@
                   </div>
                 </div>
 
+                <!-- Tarjeta IA (se mantiene) -->
                 <div class="mini">
-                  <div class="progress" style="margin-bottom:10px;">
+                  <div class="progress" style="margin-bottom:6px;">
                     <div class="bar" style="width:0%"></div>
                     <div class="pct">0%</div>
                   </div>
@@ -217,11 +250,10 @@
           </div>
         </section>
 
-        <!-- Guías de estudio que estoy siguiendo -->
+        <!-- Guías de estudio (solo OCI) -->
         <section class="section">
           <h2 class="headline">Guías de estudio que estoy siguiendo</h2>
           <div class="guidesRow">
-            <!-- Formación OCI -> ENLACE ACTUALIZADO -->
             <a class="guideCard" href="https://mylearn.oracle.com/ou/home" target="_blank" rel="noopener">
               <div class="guideBadge" title="Formación">
                 <svg viewBox="0 0 24 24"><path d="M4 10l8-4 8 4-8 4-8-4zm3 2v5l5 2 5-2v-5" /></svg>
@@ -230,23 +262,9 @@
               <div class="guideTitle">Ruta hacia la certificación OCI Foundations Associate - ONE</div>
 
               <div class="gaugeWrap">
-                <svg viewBox="0 0 200 80" aria-hidden="true">
-                  <path d="M10,70 A90,90 0 0 1 190,70" fill="none" stroke="#e1e7ee" stroke-width="20" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="guideKpi">0/5
-                <small>cursos finalizados</small>
-              </div>
-            </a>
-
-            <!-- Plan de Estudio ONE TECH ADVANCED -->
-            <a class="guideCard" href="https://app.aluracursos.com/corp/one-tech-advanced-7327-p16046" target="_blank" rel="noopener">
-              <div class="guideKind" style="color:#7d8aa0">PLAN DE ESTUDIO</div>
-              <div class="guideTitle">ONE | TECH ADVANCED</div>
-
-              <div class="gaugeWrap">
-                <svg viewBox="0 0 200 80" aria-hidden="true">
-                  <path d="M10,70 A90,90 0 0 1 190,70" fill="none" stroke="#e1e7ee" stroke-width="20" stroke-linecap="round"/>
+                <svg viewBox="0 0 220 120" aria-hidden="true">
+                  <path d="M20,100 A90,90 0 0 1 200,100" fill="none" stroke="#e7edf3" stroke-width="18" stroke-linecap="round"/>
+                  <path d="M20,100 A90,90 0 0 1 20,100" fill="none" stroke="#e45a5a" stroke-width="18" stroke-linecap="round"/>
                 </svg>
               </div>
               <div class="guideKpi">0/5
@@ -264,18 +282,16 @@
             <div class="headBox">FORMACIONES</div>
           </div>
 
-          <!-- Fila Programación -->
-          <div class="rows" style="margin-bottom:12px;">
+          <div class="rows" style="margin-bottom:10px;">
             <div class="catTile">
               <div class="catIcon">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" opacity=".95">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" opacity=".95">
                   <path d="M8.5 7L5 10.5 8.5 14M11 14h7" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                   <rect x="2" y="4" width="20" height="16" rx="3" ry="3" fill="none" stroke="#fff" stroke-width="1.6" opacity=".9"/>
                 </svg>
               </div>
               <div>
                 <div class="catTitle">Programación</div>
-                <!-- URL ACTUALIZADA -->
                 <a class="catLink" href="https://www.aluracursos.com/cursos-online-programacao" target="_blank">VER TODOS LOS CURSOS</a>
               </div>
             </div>
@@ -284,11 +300,10 @@
             </a>
           </div>
 
-          <!-- Fila Data Science -->
-          <div class="rows" style="margin-bottom:12px;">
+          <div class="rows" style="margin-bottom:10px;">
             <div class="catTile ds">
               <div class="catIcon">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="1.8">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="1.8">
                   <ellipse cx="12" cy="12" rx="7.5" ry="4.5"/>
                   <ellipse cx="12" cy="12" rx="4.5" ry="7.5" transform="rotate(60 12 12)"/>
                   <circle cx="12" cy="12" r="1.2" fill="#fff"/>
@@ -296,7 +311,6 @@
               </div>
               <div>
                 <div class="catTitle">Data Science</div>
-                <!-- URL ACTUALIZADA -->
                 <a class="catLink" href="https://www.aluracursos.com/cursos-online-data-science/data-science" target="_blank">VER TODOS LOS CURSOS</a>
               </div>
             </div>
@@ -305,18 +319,16 @@
             </a>
           </div>
 
-          <!-- Fila DevOps -->
           <div class="rows">
             <div class="catTile dev">
               <div class="catIcon">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="1.8">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="1.8">
                   <circle cx="12" cy="12" r="3.2" />
                   <path d="M12 2.5v2.3M12 19.2v2.3M4.8 4.8l1.6 1.6M17.6 17.6l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.8 19.2l1.6-1.6M17.6 6.4l1.6-1.6"/>
                 </svg>
               </div>
               <div>
                 <div class="catTitle">DevOps</div>
-                <!-- URL ACTUALIZADA -->
                 <a class="catLink" href="https://www.aluracursos.com/cursos-online-devops" target="_blank">VER TODOS LOS CURSOS</a>
               </div>
             </div>

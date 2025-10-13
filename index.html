@@ -25,26 +25,26 @@
     .btn-green{background:#3ad27a;color:#fff;padding:8px 12px;font-weight:800;border:0;border-radius:4px;}
     .btn-green:hover{opacity:.92}
 
-    /* ===== Grid principal ===== */
+    /* ===== Grid principal (sin padding superior) ===== */
     .grid{
       display:flex;gap:48px;justify-content:center;align-items:flex-start;
-      padding:0 0 40px 0;                 /* <<< SIN padding superior */
+      padding:0 0 40px 0;   /* sin padding-top */
     }
     .col-left{width:520px;}
     .col-right{width:660px;}
 
-    /* ===== LOGIN — caja blanca ===== */
+    /* ===== LOGIN — caja blanca (alineación exacta con header) ===== */
     .loginBox{
       background:#ffffff;
       border:1px solid #eef1f4;
       border-radius:8px;
       box-shadow:0 1px 4px rgba(0,0,0,.05);
       padding:40px 36px;
-      margin-top:-12px;                   /* <<< sube para “pegarse” al header */
+      margin-top:-1px;   /* cubre la línea de 1px del header: fusión perfecta */
     }
     .loginTitle{
       margin:10px 0 6px;color:#6b6b6b;font-weight:900;
-      font-size:40px; line-height:1.12; letter-spacing:.2px; text-align:center;
+      font-size:40px;line-height:1.12;letter-spacing:.2px;text-align:center;
     }
     .loginSubtitle{
       margin:0 0 22px;color:#a3a3a3;font-size:16px;font-weight:400;text-align:center;
@@ -72,14 +72,21 @@
       min-height:120px;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
       box-shadow:0 0 0 1px rgba(0,0,0,.02) inset;outline:none;overflow:hidden;
     }
+    /* Barra superior clara definida (6px) */
     .card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:currentColor}
+    /* Hover: aclarar + micro-lift + sombra tenue */
     .card:hover,.card:focus-visible{transform:translateY(-4px);filter:brightness(1.03);box-shadow:0 5px 10px rgba(0,0,0,.07)}
     .card:focus-visible{box-shadow:0 5px 10px rgba(0,0,0,.07),0 0 0 3px rgba(255,255,255,.65) inset}
+
     .card b{display:block;font-size:16px;margin-bottom:6px;line-height:1.15;font-weight:900}
     .card span{font-size:12px;line-height:1.28;color:rgba(255,255,255,.98);font-style:italic;letter-spacing:.1px}
+
+    /* Iconos (trazo fino) */
     .card-icon{position:absolute;top:14px;left:12px;width:28px;height:28px;opacity:.98}
     .card-icon svg{width:100%;height:100%}
     .card-icon *{stroke:#fff;fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+
+    /* Colores base + barra clara */
     .c1{background:#00c86f}  .c1::before{background:#2fda8b}
     .c2{background:#6bd1ff}  .c2::before{background:#89dcff}
     .c3{background:#9cd33b}  .c3::before{background:#b8e260}
@@ -96,7 +103,8 @@
     .footer{margin-top:auto;border-top:1px solid #e5e7eb;padding:26px 0;background:#f7f9fa}
     .footer-wrap{
       max-width:1180px;margin:0 auto;padding:0 24px;
-      display:grid;grid-template-columns:220px 1fr 1fr 320px;gap:24px;align-items:start;color:#6b7680;
+      display:grid;grid-template-columns:220px 1fr 1fr 320px;gap:24px;align-items:start;
+      color:#6b7680;
     }
     .footer-logo{display:flex;align-items:flex-start;gap:8px;color:#a0a7ae}
     .footer-logo .alura{font-size:36px;line-height:1;font-weight:900}
@@ -111,6 +119,7 @@
     .social-ico svg{width:22px;height:22px;stroke:none;fill:#ffffff}
     .social-ico:hover{opacity:.9}
 
+    /* Mensaje OK */
     .ok{display:none;align-items:center;justify-content:center;min-height:50vh;font-size:22px}
     .ok.show{display:flex}
 
@@ -122,7 +131,8 @@
       .footer-social{grid-column:auto}
       .social-row{justify-content:flex-start}
       .btn-login{width:50%;max-width:260px;min-width:180px}
-      .loginBox{margin-top:0;}            /* <<< en móvil, sin solapar el header */
+      /* En móvil puedes quitar la fusión si prefieres: */
+      /* .loginBox{margin-top:0;} */
     }
   </style>
 </head>

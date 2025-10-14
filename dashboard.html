@@ -17,9 +17,9 @@
     .topbar{background:#fff;border-bottom:1px solid #dfe6ec}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
     .top-row{display:flex;align-items:center;gap:14px;height:80px}
-    .logo{display:flex;align-items:flex-end;gap:6px;color:#7a7a7a;text-decoration:none}
-    .logo .a{font-size:26px;font-weight:900;line-height:1}
-    .logo .lat{font-size:11px;letter-spacing:.8px;margin-bottom:2px}
+    .logo{display:flex;align-items:center;gap:6px;color:#7a7a7a;text-decoration:none}
+    /* Logo como imagen (sustituye el texto) */
+    .logo-img{display:block;height:34px;width:auto;}
 
     .nav{margin-left:auto;display:flex;align-items:center;gap:34px}
     .nav a{
@@ -149,7 +149,10 @@
   <!-- HEADER -->
   <div class="topbar">
     <div class="container top-row">
-      <a class="logo" href="dashboard.html"><span class="a">alura</span><span class="lat">LATAM</span></a>
+      <!-- Logo sustituido por imagen -->
+      <a class="logo" href="dashboard.html" aria-label="Alura LATAM — ONE">
+        <img class="logo-img" src="assets/logo-alura-one.png" alt="alura LATAM | ONE">
+      </a>
 
       <nav class="nav">
         <a href="https://app.aluracursos.com/learningPaths" target="_blank">MI APRENDIZAJE <span class="caret">▾</span></a>
